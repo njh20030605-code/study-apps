@@ -62,6 +62,11 @@
 
 源码在桌面各目录里改，运行 `sync-from-desktop.sh` 会把最新版拷进来（排除 backups / 进度存档 / .DS_Store），再提交推送。
 
+## 联系
+
+- 微信：**Anyway77777777**
+- GitHub：[@njh20030605-code](https://github.com/njh20030605-code)
+
 ## 许可
 
 MIT，见 [LICENSE](LICENSE)。

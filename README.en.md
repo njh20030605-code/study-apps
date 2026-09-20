@@ -61,6 +61,11 @@ Enter an API key once in Settings. Default is the Anthropic Messages API format;
 
 Banks are plain data files such as `js/questions-*.js`. After editing, run `node --check js/*.js`; bump the `?v=N` on script tags in `index.html` to bust the cache. Each app's `README.md` / `HANDOFF.md` (Chinese) documents its data structures and known pitfalls.
 
+## Contact
+
+- WeChat: **Anyway77777777**
+- GitHub: [@njh20030605-code](https://github.com/njh20030605-code)
+
 ## License
 
 MIT — see [LICENSE](LICENSE).
