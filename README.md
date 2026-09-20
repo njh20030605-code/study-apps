@@ -1,5 +1,21 @@
-# 学习类 App 合集 · study-apps
+<div align="center">
 
+# 学习类 App 合集 · Study Apps
+
+**离线可用、零构建的自学网页 App：成考专升本英语 / 政治 / 高数二 AI 私教、新概念 1 语法练习、工作英语，自带间隔复习与硬盘进度备份。**
+
+中文 | [English](README.en.md)
+
+![Vanilla JS](https://img.shields.io/badge/%E7%BA%AF%E5%89%8D%E7%AB%AF-HTML%20%2B%20CSS%20%2B%20JS-F7DF1E?logo=javascript&logoColor=black)
+![No build](https://img.shields.io/badge/%E6%97%A0%E9%9C%80%E6%89%93%E5%8C%85-brightgreen)
+![Offline](https://img.shields.io/badge/%E7%A6%BB%E7%BA%BF%E5%8F%AF%E7%94%A8-blue)
+![SRS](https://img.shields.io/badge/%E5%A4%8D%E4%B9%A0-SRS%20%2F%20FSRS-purple)
+![License: MIT](https://img.shields.io/badge/license-MIT-green)
+
+<img src="docs/screenshots/chengkao-english.png" width="49%" alt="成考英语·应试策略台"> <img src="docs/screenshots/chengkao-math.png" width="49%" alt="成考高数 AI 私教">
+<img src="docs/screenshots/nce1-grammar.png" width="49%" alt="新概念1语法练习"> <img src="docs/screenshots/work-english.png" width="49%" alt="工作英语">
+
+</div>
 几个跑在自己电脑上的网页版学习 App。共同特点：
 
 - **纯 HTML / CSS / 原生 JS**，没有构建步骤，双击启动脚本就能用；
@@ -44,3 +60,7 @@
 ## 同步
 
 源码在桌面各目录里改，运行 `sync-from-desktop.sh` 会把最新版拷进来（排除 backups / 进度存档 / .DS_Store），再提交推送。
+
+## 许可
+
+MIT，见 [LICENSE](LICENSE)。
