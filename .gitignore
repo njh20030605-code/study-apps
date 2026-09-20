@@ -1,0 +1,5 @@
+.DS_Store
+._*
+backups/
+*存档*.json
+*.swp

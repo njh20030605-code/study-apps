@@ -1,0 +1,54 @@
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>成考高数 AI 私教 · 专升本高等数学(二)</title>
+
+<!-- 本地 KaTeX（离线可用，不走 CDN） -->
+<link rel="stylesheet" href="katex/katex.min.css" />
+<script defer src="katex/katex.min.js"></script>
+
+<link rel="stylesheet" href="css/style.css" />
+
+<div id="app">
+  <!-- 顶栏 -->
+  <header id="topbar">
+    <div class="brand" onclick="Router.go('home')">
+      <span class="logo">∫</span>
+      <span class="brand-txt">高数 AI 私教</span>
+    </div>
+    <div class="top-right">
+      <span id="countdown" class="pill" title="距离考试"></span>
+      <button class="icon-btn" title="设置" onclick="Router.go('settings')">⚙️</button>
+    </div>
+  </header>
+
+  <!-- 主导航 -->
+  <nav id="mainnav">
+    <button data-route="home">🏠 今日</button>
+    <button data-route="practice">✍️ 练习</button>
+    <button data-route="formulas">🔢 背公式</button>
+    <button data-route="progress">📈 进度</button>
+    <button data-route="wrongbook">📕 错题</button>
+    <button data-route="exam">🧪 模拟考</button>
+  </nav>
+
+  <!-- 页面容器 -->
+  <main id="view"></main>
+
+  <footer id="foot">
+    <span>安静的自习室 · 数学从 0 到 60+</span>
+    <span id="foot-model"></span>
+  </footer>
+</div>
+
+<!-- 数据（纯 JS 挂到 window，file:// 下可直接加载） -->
+<script src="questions.js"></script>
+<script src="formulas.js"></script>
+<script src="lessons.js"></script>
+<script src="concepts.js"></script>
+
+<!-- 逻辑模块 -->
+<script src="js/util.js"></script>
+<script src="js/storage.js"></script>
+<script src="js/ai.js"></script>
+<script src="js/srs.js"></script>
+<script src="js/app.js"></script>

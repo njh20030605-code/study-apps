@@ -1,0 +1,9 @@
+# macOS 文件夹元数据，不该进版本库
+.DS_Store
+._*
+
+# 编辑器 / 系统临时文件
+*.swp
+*~
+Thumbs.db
+backups/

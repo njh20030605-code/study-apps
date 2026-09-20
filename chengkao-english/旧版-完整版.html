@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>成考专升本英语 · AI 私教</title>
+  <link rel="stylesheet" href="css/style.css?v=15" />
+</head>
+<body>
+
+  <!-- 顶栏 + 导航 -->
+  <header class="topbar">
+    <div class="brand">成考英语 · AI 私教<small>目标 90+ · 真正学懂</small></div>
+    <nav class="nav">
+      <button class="nav-item" data-route="dashboard">首页</button>
+      <button class="nav-item" data-route="today">今日学习</button>
+      <button class="nav-item" data-route="practice">练习</button>
+      <button class="nav-item" data-route="syllabus">大纲讲解</button>
+      <button class="nav-item" data-route="reading">阅读闯关</button>
+      <button class="nav-item" data-route="wrongbook">错题本</button>
+      <button class="nav-item" data-route="writing">写作</button>
+      <button class="nav-item" data-route="conversation">会话</button>
+      <button class="nav-item" data-route="mock">模拟考</button>
+      <button class="nav-item" data-route="settings">设置</button>
+    </nav>
+    <button id="theme-btn" class="icon-btn" title="切换深/浅色">🌓</button>
+  </header>
+
+  <!-- 主内容区（由 app.js 渲染） -->
+  <main id="content"></main>
+
+  <!-- 首次使用引导横幅 -->
+  <div id="onboard" class="onboard hidden">
+    <div class="onboard-text">
+      👋 欢迎！基础刷题、背模板现在就能用。想用 <b>AI 讲题 / 作文批改</b>，请先填一个 Anthropic API Key。
+    </div>
+    <button id="onboard-go" class="btn btn-primary btn-sm">去填 API Key</button>
+    <button id="onboard-skip" class="btn btn-ghost btn-sm">先逛逛</button>
+  </div>
+
+  <!-- 按依赖顺序引入脚本 -->
+  <script src="js/questions.js"></script>
+  <script src="js/questions-more.js"></script>
+  <script src="js/questions-grammar.js"></script>
+  <script src="js/questions-typed.js"></script>
+  <script src="js/questions-pack1.js"></script>
+  <script src="js/questions-pack2a.js"></script>
+  <script src="js/questions-pack2b.js"></script>
+  <script src="js/questions-real.js?v=4"></script>
+  <script src="js/questions-mock.js?v=2"></script>
+  <script src="js/content.js"></script>
+  <script src="js/reading-skills.js?v=1"></script>
+  <script src="js/dialogues.js"></script>
+  <script src="js/syllabus.js?v=7"></script>
+  <script src="js/readings.js?v=1"></script>
+  <script src="js/readings-graded.js?v=2"></script>
+  <script src="js/storage.js?v=3"></script>
+  <script src="js/api.js"></script>
+  <script src="js/app.js?v=32"></script>
+</body>
+</html>
