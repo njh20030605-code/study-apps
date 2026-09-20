@@ -15,6 +15,17 @@
 | [`nce1-grammar/`](nce1-grammar/) | 新概念英语 1 语法（对照剑桥语法体系） | 全册语法速查手册 + 分课练习；今日错题视图；每次提交自动备份 | 8902 |
 | [`work-english/`](work-english/) | 跨境电商 / TikTok 投放场景工作英语，每天 20 分钟 | 词句全部来自真实飞书沟通；FSRS 遗忘曲线排复习队列；「顽固 / 偶尔错 / 干净」三档 | 见 `说明.md` |
 
+## 给谁用
+
+| 你是 | 用哪个 |
+|---|---|
+| **备考成人高考专升本**（英语 / 政治 / 高数二）的在职考生，基础薄弱、每天只有半小时 | [`chengkao-english/`](chengkao-english/) · [`chengkao-politics/`](chengkao-politics/) · [`chengkao-math/`](chengkao-math/) |
+| **从新概念 1 重学英语语法**的成人 | [`nce1-grammar/`](nce1-grammar/) |
+| **做跨境电商 / TikTok 投放**，需要每天练一点工作英语的人 | [`work-english/`](work-english/) |
+| 想抄一套「纯前端 + 本地备份 + SRS 复习」学习 App 骨架的开发者 | 任意一个目录的 `server.py` + `js/storage.js` + `js/srs.js` |
+
+关键词：成考 · 专升本 · 英语 · 政治 · 高等数学 · 新概念英语 · AI 私教 · 间隔重复 · FSRS · 离线 · 纯 HTML
+
 ## 怎么打开
 
 每个目录里都有一个 `启动XX.command`（Mac 双击）——它找到 python3、跑 `server.py`、自动开浏览器。
