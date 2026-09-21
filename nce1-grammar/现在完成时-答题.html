@@ -6,7 +6,7 @@
 <title>新概念英语 1 · 语法练习</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,500&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,500&display=swap">
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 :root{
@@ -17,8 +17,9 @@
   --radius:14px;
   --shadow:0 1px 2px rgba(30,34,48,.06), 0 10px 28px -14px rgba(30,34,48,.22);
   --font-display:'Source Serif 4','Songti SC','STSong',Georgia,serif;
-  --font-body:'Inter',-apple-system,BlinkMacSystemFont,'PingFang SC','Microsoft YaHei',sans-serif;
-  --font-mono:'IBM Plex Mono',ui-monospace,'SFMono-Regular',Menlo,monospace;
+  --font-body:-apple-system,BlinkMacSystemFont,'SF Pro Text','PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif;
+  /* 原来是 IBM Plex Mono 代码字；2026-09-20 改成苹方/系统无衬线，变量名保留 */
+  --font-mono:-apple-system,BlinkMacSystemFont,'SF Pro Text','PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif;
 }
 @media (prefers-color-scheme:dark){:root{
   --bg:#181a21; --card:#21242d; --card-2:#262a34; --ink:#edeae1; --ink2:#a7acbb; --ink3:#6e7385;
@@ -188,7 +189,7 @@ nav button .nibar i.full{background:var(--ok)}
 .zh{color:var(--ink3);font-size:13px;margin-top:5px;font-family:var(--font-body)}
 .task{font-family:var(--font-mono);font-size:12px;letter-spacing:.02em;color:var(--accent);font-weight:600;
   margin-bottom:6px;background:var(--accent-soft);display:inline-block;padding:3px 9px;border-radius:6px}
-input[type=text]{font:inherit;font-family:var(--font-mono);font-size:15px;background:transparent;color:var(--ink);
+input[type=text]{font:inherit;font-family:var(--font-mono);font-size:16px;background:transparent;color:var(--ink);
   border:none;border-bottom:1.5px solid var(--ink3);padding:1px 4px;width:100%;outline:none}
 input[type=text]:focus{border-color:var(--accent)}
 input[type=text]:disabled{color:var(--ink2);border-style:dotted}
@@ -200,7 +201,7 @@ input[type=text].is-wrong{border-bottom-color:var(--bad);color:var(--bad)}
   position:sticky;bottom:14px;box-shadow:var(--shadow);z-index:4}
 .submit-counter{margin-right:auto;font-family:var(--font-mono);font-size:12.5px;color:var(--ink2);font-variant-numeric:tabular-nums}
 .opts{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
-.opts button{font:inherit;font-family:var(--font-mono);font-size:13.5px;background:var(--card-2);border:1.5px solid var(--line);
+.opts button{font:inherit;font-family:var(--font-mono);font-size:14px;background:var(--card-2);border:1.5px solid var(--line);
   color:var(--ink);padding:7px 15px;border-radius:9px;cursor:pointer;transition:border-color .15s}
 .opts button:hover:not(:disabled){border-color:var(--accent)}
 .opts button:disabled{cursor:default;opacity:.55}
@@ -518,7 +519,7 @@ nav button.auxtab.on{background:var(--ink);border-color:var(--ink);color:var(--b
     <div class="brand">
       <div class="bk">新概念英语 1</div>
       <div class="bt">语法练习</div>
-      <div class="bl">Lesson 83–100 · 完成时 · 将来时 · 物主代词 · that 从句</div>
+      <div class="bl">Lesson 83–120 · 完成时 · 将来时 · 比较级 · 过去进行／完成时</div>
     </div>
 
     <div class="prog">
@@ -533,6 +534,8 @@ nav button.auxtab.on{background:var(--ink);border-color:var(--ink);color:var(--b
     <nav id="tabs"></nav>
     <div class="navsec">L91–100 新增</div>
     <nav id="tabs2"></nav>
+    <div class="navsec">L101–120 新增</div>
+    <nav id="tabs3"></nav>
     <div class="navsec">练习 · 数据</div>
     <nav id="tools"></nav>
 
@@ -1334,21 +1337,23 @@ const UNITS = [
    {stem:'You must be careful.', task:'改用 had better', ans:['You had better be careful',"You'd better be careful"], exp:'be 动词也用原形 be。', tag:'had better 的用法'},
    {stem:'We must catch the eight nineteen.', task:'改用 had better', ans:['We had better catch the eight nineteen',"We'd better catch the eight nineteen"], exp:'catch 保持原形，不能写 caught。', tag:'had better 的用法'},
   ]},
-  {name:'Exercise B · 用 in … time 回答（L96 B 同款）', inst:"照原书格式，用 'll + in … time 回答。", type:'rw', items:[
+  {name:'Exercise B · 用 in … time 回答（L96 B 同款）', inst:"照原书格式，用 'll + in … time 回答。", type:'rw',
+   demo:[{stem:"Tom flew to Stockholm a month ago. What about you?（a month's time）", lines:[
+     {label:'回答', s:"I'll fly to Stockholm in a month's time.", note:"问的是谁就用谁做主语 + 'll/will + 原形动词，最后套上括号里的 in … time。问 Jean 就写 She'll… 或 Jean will…"}]}], items:[
    {stem:'I went to Sydney a month ago. What about you?（a month\'s time）', task:'回答',
     ans:["I'll go to Sydney in a month's time",'I will go to Sydney in a month\'s time'],
     exp:"in a month's time = 一个月之后。配将来时 'll go（原形）。注意 month's 的撇号。", tag:"in … time 的用法"},
    {stem:'A train left for Geneva an hour ago. What about the next one?（an hour\'s time）', task:'回答',
-    ans:["It'll leave in an hour's time",'It will leave in an hour\'s time'],
+    ans:["It'll leave in an hour's time",'It will leave in an hour\'s time','The next one will leave in an hour\'s time','The next train will leave in an hour\'s time'],
     exp:"下一趟一小时后发车 → It'll leave in an hour's time。leave 保持原形。", tag:"in … time 的用法"},
    {stem:'Carol flew to Beijing two days ago. What about you?（two days\' time）', task:'回答',
     ans:["I'll fly to Beijing in two days' time",'I will fly to Beijing in two days\' time'],
     exp:"复数 days 的所有格撇号在 s 后面：two days' time。fly 保持原形。", tag:"in … time 的用法"},
    {stem:'Tom returned to Tokyo a week ago. What about Jean?（a week\'s time）', task:'回答',
-    ans:["She'll return to Tokyo in a week's time",'She will return to Tokyo in a week\'s time'],
-    exp:"Jean 是女性 → She'll return。in a week's time 一周之后。", tag:"in … time 的用法"},
+    ans:["She'll return to Tokyo in a week's time",'She will return to Tokyo in a week\'s time','Jean will return to Tokyo in a week\'s time',"Jean'll return to Tokyo in a week's time"],
+    exp:"问 Jean，就用 Jean（或代词 She）做主语 + 'll return。in a week's time 一周之后。", tag:"in … time 的用法"},
    {stem:'They arrived two weeks ago. What about their children?（two weeks\' time）', task:'回答',
-    ans:["They'll arrive in two weeks' time",'They will arrive in two weeks\' time'],
+    ans:["They'll arrive in two weeks' time",'They will arrive in two weeks\' time','Their children will arrive in two weeks\' time','The children will arrive in two weeks\' time'],
     exp:"two weeks' time 两周之后（撇号在 s 后）。arrive 原形。", tag:"in … time 的用法"},
    {stem:'He had a holiday last month. What about you?（a month\'s time）', task:'回答',
     ans:["I'll have a holiday in a month's time",'I will have a holiday in a month\'s time'],
@@ -1533,6 +1538,708 @@ const UNITS = [
 ]}
  ]
 }
+,
+{
+ id:'u13', tab:'间接引语 says that', les:'L101–102', lesson:'Lesson 102 What does he say? He says that…',
+ title:'单元 13 · 转述别人的话：He says that…',
+ gram:`
+  <h4>公式：把别人的原话搬进 says that 后面，人称跟着换</h4>
+  <div class="fml">
+   <div class="fmlrow"><span class="fmlt">转述</span><code>He / She <b>says that</b> + 原话（<b>I → he / she</b>，<b>my → his / her</b>，<b>we → they</b>）</code></div>
+   <div class="fmlrow"><span class="fmlt">问法</span><code><b>What does</b> he <b>say</b>?　→　He says that…</code></div>
+   <div class="fmlnote">主句是 <b>says</b>（现在时），从句的<b>时态不用变</b>，只换人称和动词的单复数：
+   <span class="eg">"I am having a wonderful holiday."</span> → <span class="eg">He says that he <b>is</b> having a wonderful holiday.</span></div>
+  </div>
+  <h4>人称换算表</h4>
+  <table class="tbl"><tr><th>原话里</th><th>转述成</th><th>例</th></tr>
+   <tr><td>I / my / me</td><td>he, she / his, her / him, her</td><td>"I have lost <b>my</b> key." → He says that <b>he</b> has lost <b>his</b> key.</td></tr>
+   <tr><td>we / our / us</td><td>they / their / them</td><td>"<b>We</b> are hungry." → They say that <b>they</b> are hungry.</td></tr>
+   <tr><td>you</td><td>看指谁，多数是 I / me</td><td>"I will help <b>you</b>." → He says that he will help <b>me</b>.</td></tr></table>
+  <h4>例句拆解</h4>
+  <div class="bd">
+   <div class="bdrow">
+    <span class="bdc s"><b>Jimmy</b><i>转述的是谁</i></span>
+    <span class="bdc v"><b>says</b><i>说（三单加 s）</i></span>
+    <span class="bdc a"><b>that</b></span>
+    <span class="bdc s"><b>he</b><i>I → he</i></span>
+    <span class="bdc v"><b>is having</b><i>am → is</i></span>
+    <span class="bdc x"><b>a wonderful holiday</b></span>
+   </div>
+   <div class="bdzh">吉米说他正在度一个很棒的假期。—— 原话是 <span class="eg">I am having a wonderful holiday.</span>：I 变 he，am 跟着变 is，其它照抄。</div>
+  </div>
+  <div class="caution"><span class="label">易错提醒</span>
+  ① 换了主语，动词也要跟着换：I have → he <b>has</b>；I feel → she <b>feels</b>。<br>
+  ② 物主代词别漏：<span class="no">✗ He says that he has lost my key.</span> → <span class="yes">✓ … lost <b>his</b> key.</span><br>
+  ③ 主句是 says 不是 said，从句时态照抄，别自作主张改成过去时。</div>`,
+ ex:[
+  {name:'Exercise A · 把原话改成 says that…（L102 A 同款）', inst:'照例改写：X says that + 原话，人称和动词跟着换。', type:'rw',
+   demo:[{stem:'Tom: "I am tired."', lines:[
+     {label:'转述', s:'Tom says that he is tired.', note:'I → he，am → is，其它照抄'}]}], items:[
+   {stem:'Jimmy: "I am having a wonderful holiday."', task:'改成 Jimmy says that…', ans:['Jimmy says that he is having a wonderful holiday','Jimmy says he is having a wonderful holiday'], exp:'I → he，am → is。', tag:'间接引语 says that'},
+   {stem:'Mary: "I have lost my umbrella."', task:'改成 Mary says that…', ans:['Mary says that she has lost her umbrella','Mary says she has lost her umbrella'], exp:'I → she，have → has，my → her，三处一起换。', tag:'间接引语 says that'},
+   {stem:'Tom: "I will come tomorrow."', task:'改成 Tom says that…', ans:['Tom says that he will come tomorrow',"Tom says that he'll come tomorrow",'Tom says he will come tomorrow',"Tom says he'll come tomorrow"], exp:'I → he；will come 不变。', tag:'间接引语 says that'},
+   {stem:'The children: "We are hungry."', task:'改成 The children say that…', ans:['The children say that they are hungry','The children say they are hungry'], exp:'主句主语是复数 → say（不加 s）；we → they，are 不变。', tag:'间接引语 says that'},
+   {stem:'Mr. Black: "My car is very old."', task:'改成 Mr. Black says that…', ans:['Mr. Black says that his car is very old','Mr. Black says his car is very old'], exp:'my → his，其它照抄。', tag:'间接引语 says that'},
+   {stem:'Sally: "I can\'t find my keys."', task:'改成 Sally says that…', ans:["Sally says that she can't find her keys",'Sally says that she cannot find her keys',"Sally says she can't find her keys"], exp:"I → she，my → her；can't 后面原形 find 不变。", tag:'间接引语 says that'},
+   {stem:'The twins: "We have finished our homework."', task:'改成 The twins say that…', ans:['The twins say that they have finished their homework','The twins say they have finished their homework'], exp:'we → they，our → their；they have（复数不用 has）。', tag:'间接引语 says that'},
+   {stem:'Jane: "I must go home now."', task:'改成 Jane says that…', ans:['Jane says that she must go home now','Jane says she must go home now'], exp:'I → she；must 没有人称变化。', tag:'间接引语 says that'},
+  ]},
+  {name:'Exercise B · 填换掉的那个词', inst:'把原话转述时，空里该填什么？只填一个词。', type:'fill', items:[
+   {stem:'"I like my new job," says Tom. → Tom says that ___ likes his new job.', hint:'I → ?', ans:['he'], exp:'转述 Tom 的话，I 变成 he。', tag:'间接引语 人称转换'},
+   {stem:'"My sister is a nurse," says Ann. → Ann says that ___ sister is a nurse.', hint:'my → ?', ans:['her'], exp:'Ann 是女的，my → her。', tag:'间接引语 人称转换'},
+   {stem:'"We are going to Paris," say the Smiths. → The Smiths say that ___ are going to Paris.', hint:'we → ?', ans:['they'], exp:'we → they。', tag:'间接引语 人称转换'},
+   {stem:'"I have lost my pen," says Jim. → Jim says that he ___ lost his pen.', hint:'have → ?', ans:['has'], exp:'主语变成 he，have 要跟着变 has。', tag:'间接引语 人称转换'},
+   {stem:'"I feel tired," says Mary. → Mary says that she ___ tired.', hint:'feel → ?', ans:['feels'], exp:'she 是第三人称单数，feel 加 s。', tag:'间接引语 人称转换'},
+   {stem:'"Our house is small," say the boys. → The boys say that ___ house is small.', hint:'our → ?', ans:['their'], exp:'our → their。', tag:'间接引语 人称转换'},
+  ]},
+  {name:'Exercise C · 选择', inst:'选出正确的形式。', type:'mc', items:[
+   {stem:'He says that he ___ a wonderful time.', opts:['is having','am having','are having'], ans:'is having', exp:'从句主语 he → is having。', tag:'间接引语 says that'},
+   {stem:'They ___ that they are hungry.', opts:['say','says'], ans:'say', exp:'主句主语 They 是复数 → say。', tag:'间接引语 says that'},
+   {stem:'Ann says that ___ mother is ill.', opts:['her','my','his'], ans:'her', exp:'转述 Ann（女）的话，my → her。', tag:'间接引语 人称转换'},
+   {stem:'Jimmy says that he ___ his key.', opts:['has lost','have lost'], ans:'has lost', exp:'he → has。', tag:'间接引语 人称转换'},
+   {stem:'What ___ he say?', opts:['does','do','is'], ans:'does', exp:'一般现在时问句，he 用 does；后面 say 原形。', tag:'间接引语 says that'},
+   {stem:'Tom says that he ___ come tomorrow.', opts:['will','wills','is will'], ans:'will', exp:'will 没有人称变化。', tag:'间接引语 says that'},
+  ]},
+  {name:'Exercise D · 回答 What does he say?（L102 B 同款）', inst:'用括号里的提示，写一句 He / She / They says that… 的完整回答。', type:'rw', items:[
+   {stem:'What does Tom say?（be / at the hotel）', task:'用 He says that… 回答', ans:['He says that he is at the hotel','He says he is at the hotel'], exp:'he + is。', tag:'间接引语 says that'},
+   {stem:'What does Mary say?（want / some water）', task:'用 She says that… 回答', ans:['She says that she wants some water','She says she wants some water'], exp:'she → wants 加 s。', tag:'间接引语 says that'},
+   {stem:'What do the boys say?（be / hungry）', task:'用 They say that… 回答', ans:['They say that they are hungry','They say they are hungry'], exp:'they + are；主句 say 不加 s。', tag:'间接引语 says that'},
+   {stem:'What does the doctor say?（will come / at once）', task:'用 He says that… 回答', ans:['He says that he will come at once',"He says that he'll come at once",'He says he will come at once'], exp:'will come 原形。', tag:'间接引语 says that'},
+  ]}
+ ]
+}
+
+,
+{
+ id:'u14', tab:'too / enough', les:'L103–104', lesson:'Lesson 104 too difficult / not easy enough',
+ title:'单元 14 · too 太…（做不了）  与  enough 够…（做得了）',
+ gram:`
+  <h4>两个公式，位置正好相反</h4>
+  <div class="fml">
+   <div class="fmlrow"><span class="fmlt">too</span><code><b>too</b> + 形容词（+ to do）＝ 太…（以至于不能）</code></div>
+   <div class="fmlrow"><span class="fmlt">enough</span><code>形容词 + <b>enough</b>（+ to do）＝ 够…（能够）</code></div>
+   <div class="fmlrow"><span class="fmlt">enough + 名词</span><code><b>enough</b> + 名词：enough money / enough time</code></div>
+   <div class="fmlnote"><b>too 在形容词前，enough 在形容词后</b>；enough 跟名词时又跑到名词前面。
+   too 带否定味道（太难了→做不了），enough 带肯定味道（够大→装得下）。</div>
+  </div>
+  <h4>例句拆解</h4>
+  <div class="bd">
+   <div class="bdrow">
+    <span class="bdc s"><b>The exam</b></span>
+    <span class="bdc v"><b>was</b></span>
+    <span class="bdc a"><b>too</b><i>太</i></span>
+    <span class="bdc x"><b>difficult</b><i>形容词</i></span>
+    <span class="bdc x"><b>(for me)</b><i>对谁来说</i></span>
+   </div>
+   <div class="bdzh">考试太难了（我做不来）。—— too 放在形容词前面。</div>
+  </div>
+  <div class="bd">
+   <div class="bdrow">
+    <span class="bdc s"><b>The questions</b></span>
+    <span class="bdc v"><b>were not</b></span>
+    <span class="bdc x"><b>easy</b><i>形容词</i></span>
+    <span class="bdc a"><b>enough</b><i>够</i></span>
+   </div>
+   <div class="bdzh">题目不够容易。—— enough 放在形容词<b>后面</b>，这是中文思维最容易放反的地方。</div>
+  </div>
+  <div class="caution"><span class="label">易错提醒</span>
+  ① <span class="no">✗ enough old</span> → <span class="yes">✓ old enough</span>；<span class="no">✗ money enough</span> → <span class="yes">✓ enough money</span>。<br>
+  ② too 后面不能直接跟名词：<span class="no">✗ too people</span> → <span class="yes">✓ too many people</span> / <span class="yes">✓ too much water</span>。<br>
+  ③ "太…而不能"用 too … to do，不要再加 can't：<span class="no">✗ too hot to can't drink</span>。</div>`,
+ ex:[
+  {name:'Exercise A · 填 too 或 enough（L104 A 同款）', inst:'空里填 too 或 enough。', type:'fill', items:[
+   {stem:"The exam was ___ difficult. I couldn't answer all the questions.", hint:'too / enough', ans:['too'], exp:'太难 → too + difficult。', tag:'too / enough'},
+   {stem:'This coat is not warm ___.', hint:'too / enough', ans:['enough'], exp:'不够暖 → warm + enough（放形容词后）。', tag:'too / enough'},
+   {stem:'He is ___ young to drive a car.', hint:'too / enough', ans:['too'], exp:'太小了不能开车 → too young to drive。', tag:'too / enough'},
+   {stem:'There is ___ food for everybody.', hint:'too / enough', ans:['enough'], exp:'足够的食物 → enough + 名词。', tag:'too / enough'},
+   {stem:'She is old ___ to go to school.', hint:'too / enough', ans:['enough'], exp:'够大了能上学 → old enough to go。', tag:'too / enough'},
+   {stem:'The tea is ___ hot to drink.', hint:'too / enough', ans:['too'], exp:'太烫喝不了 → too hot to drink。', tag:'too / enough'},
+   {stem:"I haven't got ___ money to buy this car.", hint:'too / enough', ans:['enough'], exp:'钱不够 → enough money。', tag:'too / enough'},
+   {stem:'The box is ___ heavy for me to carry.', hint:'too / enough', ans:['too'], exp:'太重我搬不动 → too heavy for me to carry。', tag:'too / enough'},
+   {stem:'Is the water warm ___ to swim in?', hint:'too / enough', ans:['enough'], exp:'够暖能游泳 → warm enough。', tag:'too / enough'},
+   {stem:'There are ___ many people here.', hint:'too / enough', ans:['too'], exp:'人太多 → too many + 可数名词。', tag:'too / enough'},
+  ]},
+  {name:'Exercise B · 两句并一句', inst:'把两句话用 too … to 或 … enough to 合成一句。', type:'rw',
+   demo:[{match:'too', stem:"The soup is very hot. I can't eat it.", lines:[
+     {label:'too', s:'The soup is too hot to eat.', note:'"很…所以不能" → too + 形容词 + to + 原形，后面不再写 it'}]},
+     {match:'enough', stem:'He is very strong. He can lift the box.', lines:[
+     {label:'enough', s:'He is strong enough to lift the box.', note:'"够…所以能" → 形容词 + enough + to + 原形'}]}], items:[
+   {stem:"The tea is very hot. I can't drink it.", task:'用 too … to 合成一句', ans:['The tea is too hot to drink','The tea is too hot for me to drink'], exp:'too hot to drink，句尾不用再写 it。', tag:'too … to / enough to'},
+   {stem:"He is very young. He can't drive.", task:'用 too … to 合成一句', ans:['He is too young to drive'], exp:'too young to drive。', tag:'too … to / enough to'},
+   {stem:"The box is very heavy. I can't lift it.", task:'用 too … to 合成一句', ans:['The box is too heavy to lift','The box is too heavy for me to lift'], exp:'too heavy (for me) to lift。', tag:'too … to / enough to'},
+   {stem:'She is very tall. She can reach the shelf.', task:'用 … enough to 合成一句', ans:['She is tall enough to reach the shelf'], exp:'tall enough to reach，enough 在形容词后。', tag:'too … to / enough to'},
+   {stem:'The water is warm. We can swim.', task:'用 … enough to 合成一句', ans:['The water is warm enough to swim in','The water is warm enough for us to swim in'], exp:'warm enough to swim in —— 句尾的 in 别丢（在水里游）。', tag:'too … to / enough to'},
+   {stem:'I have a lot of money. I can buy the car.', task:'用 enough + 名词 合成一句', ans:['I have enough money to buy the car',"I've got enough money to buy the car",'I have got enough money to buy the car'], exp:'enough money to buy，enough 跟名词时放名词前。', tag:'too … to / enough to'},
+  ]},
+  {name:'Exercise C · 选择', inst:'选出正确的说法。', type:'mc', items:[
+   {stem:'The exam was not easy ___.', opts:['enough','too'], ans:'enough', exp:'not easy enough 不够容易。', tag:'too / enough'},
+   {stem:"He didn't pass the exam. It was ___ difficult.", opts:['too','enough'], ans:'too', exp:'too difficult 太难。', tag:'too / enough'},
+   {stem:'Is there ___ tea for everybody?', opts:['enough','too'], ans:'enough', exp:'enough + 名词。', tag:'too / enough'},
+   {stem:'This room is ___ small for ten people.', opts:['too','enough'], ans:'too', exp:'too small for…', tag:'too / enough'},
+   {stem:"She isn't ___ to go to school.", opts:['old enough','enough old'], ans:'old enough', exp:'enough 放形容词后面。', tag:'too / enough'},
+   {stem:'We have ___ for everybody.', opts:['enough chairs','chairs enough'], ans:'enough chairs', exp:'enough 放名词前面。', tag:'too / enough'},
+  ]}
+ ]
+}
+
+,
+{
+ id:'u15', tab:'want sb to do / put it on', les:'L105–106', lesson:'Lesson 106 Tell him to… / Put it on',
+ title:'单元 15 · 让别人做事（tell / ask / want sb to do）与  put it on',
+ gram:`
+  <h4>公式一：让谁做什么</h4>
+  <div class="fml">
+   <div class="fmlrow"><span class="fmlt">肯定</span><code><b>tell / ask / want</b> + 人 + <b>to</b> + 动词原形</code></div>
+   <div class="fmlrow"><span class="fmlt">否定</span><code>tell / ask / want + 人 + <b>not to</b> + 动词原形</code></div>
+   <div class="fmlnote">tell 是"叫、吩咐"，ask 是"请"，want 是"想要"。三个的用法一模一样：后面接<b>人 + to do</b>。
+   否定把 <b>not</b> 放在 to 前面：<span class="eg">Tell him <b>not to</b> be late.</span></div>
+  </div>
+  <h4>公式二：动词短语里的代词要放中间</h4>
+  <div class="fml">
+   <div class="fmlrow"><span class="fmlt">名词</span><code>Put on <b>your coat</b>.　＝　Put <b>your coat</b> on.　（名词前后都行）</code></div>
+   <div class="fmlrow"><span class="fmlt">代词</span><code>Put <b>it</b> on.　　<span class="no">✗ Put on it.</span>　（代词只能放中间）</code></div>
+   <div class="fmlnote">put on 穿上 / take off 脱下 / turn on 打开 / turn off 关掉 / pick up 捡起 / put down 放下 —— 这一批短语动词，
+   宾语是 <b>it / them</b> 时一定放在两个词<b>中间</b>。</div>
+  </div>
+  <h4>例句拆解</h4>
+  <div class="bd">
+   <div class="bdrow">
+    <span class="bdc v"><b>Ask</b><i>请</i></span>
+    <span class="bdc s"><b>her</b><i>人（宾格）</i></span>
+    <span class="bdc a"><b>to</b></span>
+    <span class="bdc v"><b>type</b><i>原形</i></span>
+    <span class="bdc x"><b>this letter</b></span>
+   </div>
+   <div class="bdzh">请她把这封信打出来。—— 人用宾格（her，不是 she），动词用原形。</div>
+  </div>
+  <div class="caution"><span class="label">易错提醒</span>
+  ① <span class="no">✗ Tell him come here.</span> → <span class="yes">✓ Tell him <b>to</b> come here.</span><br>
+  ② <span class="no">✗ Tell him don't be late.</span> → <span class="yes">✓ Tell him <b>not to</b> be late.</span><br>
+  ③ <span class="no">✗ Take off them.</span> → <span class="yes">✓ Take <b>them</b> off.</span></div>`,
+ ex:[
+  {name:'Exercise A · 改成 Tell / Ask / Want + 人 + to do（L106 A 同款）', inst:'把引号里的命令改成一句话。', type:'rw',
+   demo:[{stem:'Tell her: "Wait here."', lines:[
+     {label:'改写', s:'Tell her to wait here.', note:'人 + to + 原形；否定句是 not to'}]}], items:[
+   {stem:'Tell him: "Come here."', task:'改写', ans:['Tell him to come here'], exp:'tell + him + to come。', tag:'tell / ask / want sb to do'},
+   {stem:'Ask her: "Type this letter."', task:'改写', ans:['Ask her to type this letter'], exp:'ask + her + to type。', tag:'tell / ask / want sb to do'},
+   {stem:'I want you: "Wait here."', task:'改写', ans:['I want you to wait here'], exp:'want + you + to wait。', tag:'tell / ask / want sb to do'},
+   {stem:'Tell them: "Don\'t make a noise."', task:'改写（否定）', ans:['Tell them not to make a noise'], exp:'否定：not to make。', tag:'tell / ask / want sb to do'},
+   {stem:'Ask him: "Open the window."', task:'改写', ans:['Ask him to open the window'], exp:'ask + him + to open。', tag:'tell / ask / want sb to do'},
+   {stem:'She wants me: "Post the letter."', task:'改写', ans:['She wants me to post the letter'], exp:'wants + me + to post。', tag:'tell / ask / want sb to do'},
+   {stem:'Tell Miss Jones: "Don\'t be late."', task:'改写（否定）', ans:['Tell Miss Jones not to be late'], exp:'not to be late。', tag:'tell / ask / want sb to do'},
+   {stem:'I want him: "Answer the phone."', task:'改写', ans:['I want him to answer the phone'], exp:'want + him + to answer。', tag:'tell / ask / want sb to do'},
+  ]},
+  {name:'Exercise B · 换成代词，放中间（L106 B 同款）', inst:'把名词换成括号里的代词，重写整句。', type:'rw',
+   demo:[{stem:'Put on your shoes.（them）', lines:[
+     {label:'改写', s:'Put them on.', note:'代词夹在 put 和 on 中间'}]}], items:[
+   {stem:'Put on your coat.（it）', task:'代词放中间', ans:['Put it on'], exp:'Put it on，不是 Put on it。', tag:'put it on 代词位置'},
+   {stem:'Take off your shoes.（them）', task:'代词放中间', ans:['Take them off'], exp:'Take them off。', tag:'put it on 代词位置'},
+   {stem:'Turn on the light.（it）', task:'代词放中间', ans:['Turn it on'], exp:'Turn it on。', tag:'put it on 代词位置'},
+   {stem:'Turn off the radio.（it）', task:'代词放中间', ans:['Turn it off'], exp:'Turn it off。', tag:'put it on 代词位置'},
+   {stem:'Pick up the books.（them）', task:'代词放中间', ans:['Pick them up'], exp:'Pick them up。', tag:'put it on 代词位置'},
+   {stem:'Put down the case.（it）', task:'代词放中间', ans:['Put it down'], exp:'Put it down。', tag:'put it on 代词位置'},
+   {stem:'Put on your gloves.（them）', task:'代词放中间', ans:['Put them on'], exp:'Put them on。', tag:'put it on 代词位置'},
+   {stem:'Take off your hat.（it）', task:'代词放中间', ans:['Take it off'], exp:'Take it off。', tag:'put it on 代词位置'},
+  ]},
+  {name:'Exercise C · 选择', inst:'选出正确的说法。', type:'mc', items:[
+   {stem:'Tell him ___ here.', opts:['to come','come','coming'], ans:'to come', exp:'tell sb to do。', tag:'tell / ask / want sb to do'},
+   {stem:'Ask her ___ late.', opts:['not to be','to not be',"don't be"], ans:'not to be', exp:'否定是 not to do。', tag:'tell / ask / want sb to do'},
+   {stem:'Put ___.', opts:['it on','on it'], ans:'it on', exp:'代词放中间。', tag:'put it on 代词位置'},
+   {stem:'Take ___.', opts:['them off','off them'], ans:'them off', exp:'代词放中间。', tag:'put it on 代词位置'},
+   {stem:'I want ___ this letter.', opts:['you to type','you type','that you type'], ans:'you to type', exp:'want sb to do。', tag:'tell / ask / want sb to do'},
+   {stem:'Pick ___.', opts:['it up','up it'], ans:'it up', exp:'代词放中间。', tag:'put it on 代词位置'},
+  ]}
+ ]
+}
+
+,
+{
+ id:'u16', tab:'比较级 -er than', les:'L107–108', lesson:'Lesson 108 bigger / smaller / more expensive + than',
+ title:'单元 16 · 比较级：谁比谁更…',
+ gram:`
+  <h4>公式：形容词变比较级 + than</h4>
+  <div class="fml">
+   <div class="fmlrow"><span class="fmlt">短词</span><code>形容词 + <b>-er</b> + <b>than</b>：small<b>er</b> than / cheap<b>er</b> than</code></div>
+   <div class="fmlrow"><span class="fmlt">长词</span><code><b>more</b> + 形容词 + <b>than</b>：<b>more</b> expensive than</code></div>
+   <div class="fmlrow"><span class="fmlt">加强</span><code><b>much</b> + 比较级：much bigger / much more expensive</code></div>
+  </div>
+  <h4>-er 的拼写规则</h4>
+  <table class="tbl"><tr><th>情况</th><th>规则</th><th>例</th></tr>
+   <tr><td>一般</td><td>直接加 -er</td><td>small → small<b>er</b>，cheap → cheap<b>er</b></td></tr>
+   <tr><td>以 e 结尾</td><td>只加 -r</td><td>large → large<b>r</b>，nice → nice<b>r</b></td></tr>
+   <tr><td>辅音 + y</td><td>y 变 i 加 -er</td><td>heavy → heav<b>ier</b>，easy → eas<b>ier</b></td></tr>
+   <tr><td>单元音 + 单辅音</td><td>双写末尾辅音</td><td>big → bi<b>gg</b>er，hot → ho<b>tt</b>er，thin → thi<b>nn</b>er</td></tr>
+   <tr><td>两个音节以上</td><td>前面加 more</td><td><b>more</b> expensive，<b>more</b> beautiful</td></tr></table>
+  <h4>例句拆解</h4>
+  <div class="bd">
+   <div class="bdrow">
+    <span class="bdc s"><b>This shirt</b></span>
+    <span class="bdc v"><b>is</b></span>
+    <span class="bdc x"><b>cheaper</b><i>cheap + er</i></span>
+    <span class="bdc a"><b>than</b><i>比</i></span>
+    <span class="bdc x"><b>that one</b><i>比的对象</i></span>
+   </div>
+   <div class="bdzh">这件衬衫比那件便宜。—— "one" 代替前面说过的 shirt，避免重复。</div>
+  </div>
+  <div class="caution"><span class="label">易错提醒</span>
+  ① 不能又加 more 又加 -er：<span class="no">✗ more bigger</span>。<br>
+  ② than 不是 then：<span class="no">✗ bigger then</span>。<br>
+  ③ 比较级前面加 much 不加 very：<span class="no">✗ very bigger</span> → <span class="yes">✓ much bigger</span>。</div>`,
+ ex:[
+  {name:'Exercise A · 写出比较级（L108 A 同款）', inst:'用括号里形容词的比较级填空。', type:'fill', items:[
+   {stem:'This box is ___ than that one.', hint:'big', ans:['bigger'], exp:'big 双写 g → bigger。', tag:'比较级拼写'},
+   {stem:'My case is ___ than yours.', hint:'small', ans:['smaller'], exp:'直接加 -er。', tag:'比较级拼写'},
+   {stem:'This shirt is ___ than that one.', hint:'cheap', ans:['cheaper'], exp:'直接加 -er。', tag:'比较级拼写'},
+   {stem:'Your bag is ___ than mine.', hint:'heavy', ans:['heavier'], exp:'y 变 i 加 -er。', tag:'比较级拼写'},
+   {stem:'Their house is ___ than ours.', hint:'large', ans:['larger'], exp:'以 e 结尾只加 r。', tag:'比较级拼写'},
+   {stem:'Today is ___ than yesterday.', hint:'hot', ans:['hotter'], exp:'双写 t → hotter。', tag:'比较级拼写'},
+   {stem:'This book is ___ than that one.', hint:'thin', ans:['thinner'], exp:'双写 n → thinner。', tag:'比较级拼写'},
+   {stem:'This question is ___ than the last one.', hint:'easy', ans:['easier'], exp:'y 变 i → easier。', tag:'比较级拼写'},
+   {stem:'My father is ___ than my mother.', hint:'old', ans:['older'], exp:'直接加 -er。', tag:'比较级拼写'},
+   {stem:'This café is ___ than that one.', hint:'nice', ans:['nicer'], exp:'以 e 结尾只加 r。', tag:'比较级拼写'},
+   {stem:'This dress is ___ than that one.', hint:'expensive', ans:['more expensive'], exp:'长词前面加 more。', tag:'比较级拼写'},
+   {stem:'Paris is ___ than my town.', hint:'beautiful', ans:['more beautiful'], exp:'长词前面加 more。', tag:'比较级拼写'},
+  ]},
+  {name:'Exercise B · 两句并一句（L108 B 同款）', inst:'用比较级 + than 把两句合成一句，以第一句的主语开头。', type:'rw',
+   demo:[{stem:'This book is thick. That book is thin.', lines:[
+     {label:'合并', s:'This book is thicker than that book.', note:'第一句主语开头 + 比较级 + than + 另一个；that book 也可以说 that one'}]}], items:[
+   {stem:'This box is big. That box is small.', task:'以 This box 开头', ans:['This box is bigger than that box','This box is bigger than that one'], exp:'bigger than。', tag:'比较级 + than'},
+   {stem:'Tom is tall. Jim is short.', task:'以 Tom 开头', ans:['Tom is taller than Jim'], exp:'taller than Jim。', tag:'比较级 + than'},
+   {stem:'This dress is expensive. That dress is cheap.', task:'以 This dress 开头', ans:['This dress is more expensive than that dress','This dress is more expensive than that one'], exp:'more expensive than。', tag:'比较级 + than'},
+   {stem:'My car is old. Your car is new.', task:'以 My car 开头', ans:['My car is older than your car','My car is older than yours'], exp:'older than yours（= your car）。', tag:'比较级 + than'},
+   {stem:'This road is wide. That road is narrow.', task:'以 This road 开头', ans:['This road is wider than that road','This road is wider than that one'], exp:'wide 以 e 结尾 → wider。', tag:'比较级 + than'},
+   {stem:'Ann is twenty. Jane is twenty-five.', task:'以 Jane 开头', ans:['Jane is older than Ann'], exp:'年纪大 → older than。', tag:'比较级 + than'},
+  ]},
+  {name:'Exercise C · 选择', inst:'选出正确的形式。', type:'mc', items:[
+   {stem:'This one is ___ than that one.', opts:['bigger','more big','biggest'], ans:'bigger', exp:'短词加 -er。', tag:'比较级拼写'},
+   {stem:'Your case is ___ than mine.', opts:['heavier','heavyer','more heavy'], ans:'heavier', exp:'y 变 i。', tag:'比较级拼写'},
+   {stem:'This dress is ___ expensive than that one.', opts:['more','much','very'], ans:'more', exp:'长词用 more。', tag:'比较级拼写'},
+   {stem:'A ship is ___ than a boat.', opts:['larger','more large','largest'], ans:'larger', exp:'large → larger。', tag:'比较级拼写'},
+   {stem:'Tom is much ___ than Jim.', opts:['taller','more tall','tall'], ans:'taller', exp:'much + 比较级。', tag:'比较级 + than'},
+   {stem:'This coat is smaller ___ that one.', opts:['than','then','as'], ans:'than', exp:'比较级配 than。', tag:'比较级 + than'},
+  ]}
+ ]
+}
+
+,
+{
+ id:'u17', tab:'more / less / fewer · better / worse', les:'L109–110', lesson:'Lesson 110 more than / less than / fewer than',
+ title:'单元 17 · 数量比较：more / less / fewer  与  不规则比较级',
+ gram:`
+  <h4>数量怎么比</h4>
+  <div class="fml">
+   <div class="fmlrow"><span class="fmlt">更多</span><code><b>more</b> + 名词 + than　（可数不可数都用 more）</code></div>
+   <div class="fmlrow"><span class="fmlt">更少</span><code><b>less</b> + 不可数（less sugar）　｜　<b>fewer</b> + 可数复数（fewer books）</code></div>
+   <div class="fmlrow"><span class="fmlt">一点</span><code><b>a little</b> + 不可数（a little milk）　｜　<b>a few</b> + 可数复数（a few people）</code></div>
+  </div>
+  <h4>四个不规则比较级（必背）</h4>
+  <table class="tbl"><tr><th>原级</th><th>比较级</th><th>例</th></tr>
+   <tr><td>good</td><td><b>better</b></td><td>This coffee is better than that.</td></tr>
+   <tr><td>bad</td><td><b>worse</b></td><td>My cold is worse today.</td></tr>
+   <tr><td>much / many</td><td><b>more</b></td><td>I have more money than you.</td></tr>
+   <tr><td>little</td><td><b>less</b></td><td>She has less time than I have.</td></tr></table>
+  <h4>例句拆解</h4>
+  <div class="bd">
+   <div class="bdrow">
+    <span class="bdc s"><b>Tom</b></span>
+    <span class="bdc v"><b>has</b></span>
+    <span class="bdc x"><b>fewer</b><i>更少（可数）</i></span>
+    <span class="bdc x"><b>books</b><i>复数</i></span>
+    <span class="bdc a"><b>than</b></span>
+    <span class="bdc x"><b>Jim</b></span>
+   </div>
+   <div class="bdzh">汤姆的书比吉姆少。—— books 可数 → fewer；换成 sugar 这种不可数就用 less。</div>
+  </div>
+  <div class="caution"><span class="label">易错提醒</span>
+  ① <span class="no">✗ gooder / badder / more good</span> → <span class="yes">✓ better / worse</span>。<br>
+  ② a little 配不可数，a few 配可数：<span class="no">✗ a few sugar</span> → <span class="yes">✓ a little sugar</span>。<br>
+  ③ "少于那个" 说 <span class="yes">less than that</span>，不是 <span class="no">✗ little than that</span>。</div>`,
+ ex:[
+  {name:'Exercise A · 选择 a little / a few / less / fewer / more（L110 A 同款）', inst:'选出正确的词。', type:'mc', items:[
+   {stem:'How much sugar? Just ___.', opts:['a little','a few'], ans:'a little', exp:'sugar 不可数 → a little。', tag:'a little / a few'},
+   {stem:'There are ___ people here today.', opts:['a few','a little'], ans:'a few', exp:'people 可数 → a few。', tag:'a little / a few'},
+   {stem:'I want ___ coffee than you.', opts:['less','fewer'], ans:'less', exp:'coffee 不可数 → less。', tag:'less / fewer'},
+   {stem:'She has ___ books than I have.', opts:['fewer','less'], ans:'fewer', exp:'books 可数 → fewer。', tag:'less / fewer'},
+   {stem:'He drinks ___ milk than tea.', opts:['more','many'], ans:'more', exp:'比较用 more，many 不能加 than。', tag:'less / fewer'},
+   {stem:'This film is ___ than that one.', opts:['better','gooder','more good'], ans:'better', exp:'good → better。', tag:'不规则比较级'},
+   {stem:'My English is ___ than his.', opts:['worse','badder','more bad'], ans:'worse', exp:'bad → worse。', tag:'不规则比较级'},
+   {stem:'Two teaspoonfuls? No, ___ than that.', opts:['less','fewer','little'], ans:'less', exp:'糖不可数 → less than that。', tag:'less / fewer'},
+  ]},
+  {name:'Exercise B · 不规则比较级填空', inst:'用括号里词的比较级填空。', type:'fill', items:[
+   {stem:'This coffee is ___ than that.', hint:'good', ans:['better'], exp:'good → better。', tag:'不规则比较级'},
+   {stem:'The weather today is ___ than yesterday.', hint:'bad', ans:['worse'], exp:'bad → worse。', tag:'不规则比较级'},
+   {stem:'I have ___ money than you.', hint:'much', ans:['more'], exp:'much → more。', tag:'不规则比较级'},
+   {stem:'She has ___ time than I have.', hint:'little', ans:['less'], exp:'little → less。', tag:'不规则比较级'},
+   {stem:'There are ___ mistakes in this letter.', hint:'few', ans:['fewer'], exp:'few → fewer（可数）。', tag:'不规则比较级'},
+   {stem:'He eats ___ than his brother.', hint:'much', ans:['more'], exp:'much → more。', tag:'不规则比较级'},
+   {stem:"Tom's work is ___ than Jim's.", hint:'good', ans:['better'], exp:'good → better。', tag:'不规则比较级'},
+   {stem:'My cold is ___ today.', hint:'bad', ans:['worse'], exp:'bad → worse。', tag:'不规则比较级'},
+  ]},
+  {name:'Exercise C · 两句并一句', inst:'按提示用 more / less / fewer / better / worse 合成一句。', type:'rw', items:[
+   {stem:'I have some money. You have a lot of money.', task:'用 more，以 You 开头', ans:['You have more money than I have','You have more money than me','You have more money than I'], exp:'more money than。', tag:'less / fewer'},
+   {stem:'Tom has three books. Jim has ten books.', task:'用 fewer，以 Tom 开头', ans:['Tom has fewer books than Jim'], exp:'books 可数 → fewer。', tag:'less / fewer'},
+   {stem:'This tea is good. That tea is bad.', task:'用 better，以 This tea 开头', ans:['This tea is better than that tea','This tea is better than that one','This tea is better than that'], exp:'better than。', tag:'不规则比较级'},
+   {stem:'Your work is bad. My work is very bad.', task:'用 worse，以 My work 开头', ans:['My work is worse than yours','My work is worse than your work'], exp:'worse than yours。', tag:'不规则比较级'},
+   {stem:'I drink a little coffee. He drinks a lot.', task:'用 less，以 I 开头', ans:['I drink less coffee than he does','I drink less coffee than him','I drink less coffee than he'], exp:'coffee 不可数 → less。', tag:'less / fewer'},
+   {stem:'There are five chairs. There are eight people.', task:'用 fewer，以 There are 开头', ans:['There are fewer chairs than people'], exp:'fewer chairs than people。', tag:'less / fewer'},
+  ]}
+ ]
+}
+
+,
+{
+ id:'u18', tab:'最高级 the -est / as…as', les:'L111–112', lesson:'Lesson 112 the most expensive / the cheapest / as … as',
+ title:'单元 18 · 最高级（三个以上比出"最"）与  as … as（一样）',
+ gram:`
+  <h4>公式</h4>
+  <div class="fml">
+   <div class="fmlrow"><span class="fmlt">最高级</span><code><b>the</b> + 形容词 <b>-est</b>　｜　<b>the most</b> + 长形容词　（+ in / of …）</code></div>
+   <div class="fmlrow"><span class="fmlt">一样</span><code><b>as</b> + 形容词原级 + <b>as</b>：as tall as</code></div>
+   <div class="fmlrow"><span class="fmlt">不如</span><code><b>not as</b> + 原级 + <b>as</b>：not as big as（＝ 比它小）</code></div>
+   <div class="fmlnote">两个比 → 比较级 + than；三个以上比出"最" → <b>the</b> + 最高级。
+   as … as 中间放<b>原级</b>，不加 -er 也不加 -est。</div>
+  </div>
+  <h4>最高级拼写（和比较级同一套规则）</h4>
+  <table class="tbl"><tr><th>原级</th><th>比较级</th><th>最高级</th></tr>
+   <tr><td>cheap</td><td>cheaper</td><td>the cheap<b>est</b></td></tr>
+   <tr><td>large</td><td>larger</td><td>the larg<b>est</b></td></tr>
+   <tr><td>big</td><td>bigger</td><td>the bi<b>ggest</b></td></tr>
+   <tr><td>easy</td><td>easier</td><td>the eas<b>iest</b></td></tr>
+   <tr><td>expensive</td><td>more expensive</td><td>the <b>most</b> expensive</td></tr>
+   <tr><td>good / bad</td><td>better / worse</td><td>the <b>best</b> / the <b>worst</b></td></tr></table>
+  <h4>例句拆解</h4>
+  <div class="bd">
+   <div class="bdrow">
+    <span class="bdc s"><b>This</b></span>
+    <span class="bdc v"><b>is</b></span>
+    <span class="bdc a"><b>the</b><i>最高级前必有</i></span>
+    <span class="bdc x"><b>most expensive</b><i>长词用 most</i></span>
+    <span class="bdc x"><b>model</b></span>
+    <span class="bdc x"><b>in the shop</b><i>范围</i></span>
+   </div>
+   <div class="bdzh">这是店里最贵的型号。—— 最高级前面的 the 不能丢，后面常跟 in / of 说明范围。</div>
+  </div>
+  <div class="caution"><span class="label">易错提醒</span>
+  ① <span class="no">✗ the more expensive model in the shop</span> → 三个以上比要用 <span class="yes">✓ the most</span>。<br>
+  ② <span class="no">✗ as taller as</span> → <span class="yes">✓ as tall as</span>（原级）。<br>
+  ③ <span class="no">✗ goodest / bestest</span> → <span class="yes">✓ the best</span>。</div>`,
+ ex:[
+  {name:'Exercise A · 写出最高级（L112 A 同款）', inst:'用括号里形容词的最高级填空（the 已经给出）。', type:'fill', items:[
+   {stem:'This is the ___ model in the shop.', hint:'expensive', ans:['most expensive'], exp:'长词 → most expensive。', tag:'最高级拼写'},
+   {stem:'This is the ___ shirt I have.', hint:'cheap', ans:['cheapest'], exp:'直接加 -est。', tag:'最高级拼写'},
+   {stem:'It is the ___ box of all.', hint:'big', ans:['biggest'], exp:'双写 g → biggest。', tag:'最高级拼写'},
+   {stem:'He is the ___ student in the class.', hint:'good', ans:['best'], exp:'good → best。', tag:'最高级拼写'},
+   {stem:'This is the ___ film I have ever seen.', hint:'bad', ans:['worst'], exp:'bad → worst。', tag:'最高级拼写'},
+   {stem:'London is the ___ city in England.', hint:'large', ans:['largest'], exp:'以 e 结尾只加 st。', tag:'最高级拼写'},
+   {stem:'August is the ___ month of the year.', hint:'hot', ans:['hottest'], exp:'双写 t → hottest。', tag:'最高级拼写'},
+   {stem:'This is the ___ question in the exam.', hint:'easy', ans:['easiest'], exp:'y 变 i → easiest。', tag:'最高级拼写'},
+   {stem:'Tom is the ___ boy in the family.', hint:'tall', ans:['tallest'], exp:'直接加 -est。', tag:'最高级拼写'},
+   {stem:'She is the ___ girl in the town.', hint:'beautiful', ans:['most beautiful'], exp:'长词 → most beautiful。', tag:'最高级拼写'},
+   {stem:'This is the ___ room in the house.', hint:'small', ans:['smallest'], exp:'直接加 -est。', tag:'最高级拼写'},
+   {stem:'Mr. Black is the ___ man in the village.', hint:'old', ans:['oldest'], exp:'直接加 -est。', tag:'最高级拼写'},
+  ]},
+  {name:'Exercise B · 用 as … as 合成一句（L112 B 同款）', inst:'两句合成一句：一样用 as … as，不如用 not as … as，以第一句主语开头。', type:'rw',
+   demo:[{match:'not as', stem:'This box is 5 kg. That box is 8 kg.', lines:[
+     {label:'不如', s:'This box is not as heavy as that box.', note:'not as … as ＝ 比它轻；that box 也可以说 that one'}]},
+     {match:'as', stem:'Tom is 1.70 m tall. Jim is 1.70 m tall.', lines:[
+     {label:'一样', s:'Tom is as tall as Jim.', note:'as + 原级 + as，不用比较级'}]}], items:[
+   {stem:'Tom is 1.70 m tall. Jim is 1.70 m tall.', task:'用 as … as，以 Tom 开头', ans:['Tom is as tall as Jim'], exp:'as tall as。', tag:'as … as'},
+   {stem:'This box is 5 kg. That box is 8 kg.', task:'用 not as … as，以 This box 开头', ans:['This box is not as heavy as that box','This box is not as heavy as that one',"This box isn't as heavy as that box","This box isn't as heavy as that one"], exp:'not as heavy as。', tag:'as … as'},
+   {stem:'This model costs £500. That model costs £500.', task:'用 as … as（expensive），以 This model 开头', ans:['This model is as expensive as that model','This model is as expensive as that one'], exp:'as expensive as，长词也不加 more。', tag:'as … as'},
+   {stem:'My bag is small. Your bag is big.', task:'用 not as … as，以 My bag 开头', ans:['My bag is not as big as yours','My bag is not as big as your bag',"My bag isn't as big as yours","My bag isn't as big as your bag"], exp:'not as big as yours。', tag:'as … as'},
+   {stem:'The tea is hot. The coffee is hot.', task:'用 as … as，以 The tea 开头', ans:['The tea is as hot as the coffee'], exp:'as hot as。', tag:'as … as'},
+   {stem:'Ann is twenty. Mary is thirty.', task:'用 not as … as（old），以 Ann 开头', ans:['Ann is not as old as Mary',"Ann isn't as old as Mary"], exp:'not as old as ＝ 比她小。', tag:'as … as'},
+  ]},
+  {name:'Exercise C · 选择', inst:'选出正确的形式。', type:'mc', items:[
+   {stem:'This is ___ expensive model.', opts:['the most','the more','most'], ans:'the most', exp:'最高级 the most。', tag:'最高级拼写'},
+   {stem:'He is the ___ boy in the class.', opts:['tallest','taller','most tall'], ans:'tallest', exp:'短词 -est。', tag:'最高级拼写'},
+   {stem:'This one is as ___ as that one.', opts:['cheap','cheaper','cheapest'], ans:'cheap', exp:'as … as 中间用原级。', tag:'as … as'},
+   {stem:'It is not ___ big as that one.', opts:['as','than','more'], ans:'as', exp:'not as … as。', tag:'as … as'},
+   {stem:"It's the ___ film of the year.", opts:['best','goodest','most good'], ans:'best', exp:'good → best。', tag:'最高级拼写'},
+   {stem:'Which is the ___ of the three?', opts:['cheapest','cheaper','cheap'], ans:'cheapest', exp:'三个 → 最高级。', tag:'最高级拼写'},
+  ]}
+ ]
+}
+
+,
+{
+ id:'u19', tab:'some / any / none · So do I', les:'L113–114', lesson:'Lesson 114 Have you got any…? I have got none. / So am I.',
+ title:'单元 19 · some / any / none  与  So do I / Neither do I',
+ gram:`
+  <h4>公式一：有一些 / 有没有 / 一个没有</h4>
+  <div class="fml">
+   <div class="fmlrow"><span class="fmlt">肯定</span><code>I've got <b>some</b> change.</code></div>
+   <div class="fmlrow"><span class="fmlt">疑问·否定</span><code>Have you got <b>any</b> change?　／　I haven't got <b>any</b>.</code></div>
+   <div class="fmlrow"><span class="fmlt">一个没有</span><code>I've got <b>none</b>.　（none 单独用，后面不跟名词）</code></div>
+   <div class="fmlnote">some 用在肯定句；any 用在疑问句和否定句；<b>none</b> 是"一个也没有"，可以单独回答：How much? — None.</div>
+  </div>
+  <h4>公式二："我也是"</h4>
+  <div class="fml">
+   <div class="fmlrow"><span class="fmlt">肯定接</span><code><b>So</b> + 助动词 + 主语：So am I. / So do I. / So has he. / So can they.</code></div>
+   <div class="fmlrow"><span class="fmlt">否定接</span><code><b>Neither</b> + 助动词 + 主语：Neither am I. / Neither do I. / Neither has he.</code></div>
+   <div class="fmlnote">助动词跟着前一句走：前一句是 <b>am / is / are</b> 就用 be；是 <b>have got / has</b> 就用 have / has；
+   是一般动词（like, want）就用 <b>do / does / did</b>；是 can / will 就照用 can / will。<b>主语放最后</b>。</div>
+  </div>
+  <h4>例句拆解</h4>
+  <div class="bd">
+   <div class="bdrow">
+    <span class="bdc x"><b>I like coffee.</b><i>前一句：一般动词</i></span>
+    <span class="bdc a"><b>So</b><i>也</i></span>
+    <span class="bdc v"><b>does</b><i>跟 Tom 一致</i></span>
+    <span class="bdc s"><b>Tom</b><i>主语放最后</i></span>
+   </div>
+   <div class="bdzh">我喜欢咖啡。汤姆也是。—— like 是一般动词 → 用 do；Tom 三单 → does。</div>
+  </div>
+  <div class="caution"><span class="label">易错提醒</span>
+  ① <span class="no">✗ So I am.</span> → <span class="yes">✓ So am I.</span>（主语在最后）。<br>
+  ② 前一句否定就用 Neither：<span class="no">✗ So don't I.</span> → <span class="yes">✓ Neither do I.</span><br>
+  ③ <span class="no">✗ I haven't got some.</span> → <span class="yes">✓ I haven't got any.</span> / <span class="yes">✓ I've got none.</span></div>`,
+ ex:[
+  {name:'Exercise A · 填 some / any / none（L114 A 同款）', inst:'空里填 some、any 或 none。', type:'fill', items:[
+   {stem:'Have you got ___ small change?', hint:'some / any / none', ans:['any'], exp:'疑问句用 any。', tag:'some / any / none'},
+   {stem:"I'm sorry. I've got ___.", hint:'一个也没有', ans:['none'], exp:'一个也没有 → none 单独用。', tag:'some / any / none'},
+   {stem:"I've got ___ coins in my pocket.", hint:'some / any / none', ans:['some'], exp:'肯定句用 some。', tag:'some / any / none'},
+   {stem:"There isn't ___ milk in the fridge.", hint:'some / any / none', ans:['any'], exp:'否定句用 any。', tag:'some / any / none'},
+   {stem:'Would you like ___ tea?', hint:'客气地请人喝', ans:['some'], exp:'请人吃喝的问句用 some（期待对方说 yes）。', tag:'some / any / none'},
+   {stem:'How many notes have you got? — ___.', hint:'一张也没有', ans:['none'], exp:'单独回答"一个没有" → None。', tag:'some / any / none'},
+   {stem:'Are there ___ passengers on the bus?', hint:'some / any / none', ans:['any'], exp:'疑问句用 any。', tag:'some / any / none'},
+   {stem:"I haven't got ___ bread.", hint:'some / any / none', ans:['any'], exp:'否定句用 any。', tag:'some / any / none'},
+  ]},
+  {name:'Exercise B · 用 So / Neither 接一句（L114 B 同款）', inst:'照例用括号里的人写"…也是"。', type:'rw',
+   demo:[{match:'So', stem:'I am tired.（Tom）', lines:[
+     {label:'肯定', s:'So is Tom.', note:'前一句 am → be 动词，跟 Tom 一致用 is，主语放最后'}]},
+     {match:'Neither', stem:"I don't like fish.（Tom）", lines:[
+     {label:'否定', s:'Neither does Tom.', note:"前一句否定 → Neither；don't like 是一般动词 → does"}]}], items:[
+   {stem:'I like coffee.（Tom）', task:'用 So 接', ans:['So does Tom'], exp:'like 一般动词 → does Tom。', tag:'So / Neither'},
+   {stem:'I can swim.（my sister）', task:'用 So 接', ans:['So can my sister'], exp:'can 照用。', tag:'So / Neither'},
+   {stem:"I haven't got any change.（Jim）", task:'用 Neither 接', ans:['Neither has Jim'], exp:"haven't got → has（Jim 三单）。", tag:'So / Neither'},
+   {stem:'She is a nurse.（her sister）', task:'用 So 接', ans:['So is her sister'], exp:'is → is。', tag:'So / Neither'},
+   {stem:"They don't like fish.（we）", task:'用 Neither 接', ans:['Neither do we'], exp:"don't → do we。", tag:'So / Neither'},
+   {stem:'He went to Paris last year.（I）', task:'用 So 接', ans:['So did I'], exp:'went 过去时 → did。', tag:'So / Neither'},
+   {stem:"I can't drive.（my wife）", task:'用 Neither 接', ans:['Neither can my wife'], exp:"can't → Neither can。", tag:'So / Neither'},
+   {stem:'We have seen that film.（they）', task:'用 So 接', ans:['So have they'], exp:'have seen → have they。', tag:'So / Neither'},
+  ]},
+  {name:'Exercise C · 选择', inst:'选出正确的接法。', type:'mc', items:[
+   {stem:"I've got some money. ___.", opts:['So have I','So do I','So am I'], ans:'So have I', exp:"have got → have。", tag:'So / Neither'},
+   {stem:"He doesn't like tea. ___.", opts:['Neither do I',"Neither don't I",'So do I'], ans:'Neither do I', exp:'否定接 Neither do I。', tag:'So / Neither'},
+   {stem:'Have you got ___ change?', opts:['any','some','none'], ans:'any', exp:'疑问句 any。', tag:'some / any / none'},
+   {stem:'— How much money have you got? — ___.', opts:['None','Any','No'], ans:'None', exp:'单独回答用 None。', tag:'some / any / none'},
+   {stem:"She can't come. ___.", opts:['Neither can he','Neither he can','So can he'], ans:'Neither can he', exp:'主语在最后。', tag:'So / Neither'},
+   {stem:"I'm tired. ___.", opts:['So am I','So I am','So do I'], ans:'So am I', exp:'am → So am I。', tag:'So / Neither'},
+  ]}
+ ]
+}
+
+,
+{
+ id:'u20', tab:'someone / anyone / nothing', les:'L115–116', lesson:'Lesson 116 someone / anyone / no one / everyone / something / anything / nothing',
+ title:'单元 20 · 不定代词：某人 / 任何人 / 没人 / 每个人',
+ gram:`
+  <h4>一张表：人 与 物，各四个</h4>
+  <table class="tbl"><tr><th></th><th>肯定句</th><th>疑问 · 否定</th><th>没有</th><th>全部</th></tr>
+   <tr><td><b>人</b></td><td>someone / somebody</td><td>anyone / anybody</td><td>no one / nobody</td><td>everyone / everybody</td></tr>
+   <tr><td><b>物</b></td><td>something</td><td>anything</td><td>nothing</td><td>everything</td></tr></table>
+  <div class="fml">
+   <div class="fmlnote">规律和 some / any 一样：<b>肯定用 some-，疑问否定用 any-</b>。
+   <b>no- 自己就是否定</b>，句子里不再加 not；这一批词做主语时都算<b>单数</b>：Everyone <b>is</b> here. / Nobody <b>knows</b>.</div>
+  </div>
+  <h4>例句拆解</h4>
+  <div class="bd">
+   <div class="bdrow">
+    <span class="bdc s"><b>There</b></span>
+    <span class="bdc v"><b>isn't</b><i>否定</i></span>
+    <span class="bdc x"><b>anyone</b><i>否定句用 any-</i></span>
+    <span class="bdc x"><b>at the door</b></span>
+   </div>
+   <div class="bdzh">门口没有人。—— 同样意思也可以说 <span class="eg">There is <b>no one</b> at the door.</span>（no one 自带否定，动词用肯定 is）。</div>
+  </div>
+  <div class="caution"><span class="label">易错提醒</span>
+  ① <span class="no">✗ There isn't no one.</span>（双重否定）→ <span class="yes">✓ There isn't anyone.</span> / <span class="yes">✓ There is no one.</span><br>
+  ② <span class="no">✗ Everyone are here.</span> → <span class="yes">✓ Everyone <b>is</b> here.</span><br>
+  ③ 请人吃喝、期待 yes 的问句用 something：<span class="yes">✓ Would you like something to drink?</span></div>`,
+ ex:[
+  {name:'Exercise A · 填不定代词（L116 A 同款）', inst:'按括号提示填 someone / anyone / no one / everyone / something / anything / nothing / everything。', type:'fill', items:[
+   {stem:'Is there ___ at the door?', hint:'人', ans:['anyone','anybody'], exp:'疑问句 → anyone。', tag:'不定代词'},
+   {stem:"There is ___ in the box. It's empty.", hint:'东西', ans:['nothing'], exp:'空的 → nothing。', tag:'不定代词'},
+   {stem:'___ is knocking at the door.', hint:'人 · 肯定', ans:['someone','somebody'], exp:'肯定句 → someone。', tag:'不定代词'},
+   {stem:"I can't see ___ in the room.", hint:'人', ans:['anyone','anybody'], exp:'否定句 → anyone。', tag:'不定代词'},
+   {stem:'___ likes ice cream.', hint:'每个人', ans:['everyone','everybody'], exp:'everyone + 单数动词 likes。', tag:'不定代词'},
+   {stem:'Would you like ___ to drink?', hint:'东西 · 客气地请', ans:['something'], exp:'请人吃喝用 something。', tag:'不定代词'},
+   {stem:'___ answered the phone.', hint:'没有人', ans:['no one','nobody'], exp:'没有人 → No one / Nobody，自带否定。', tag:'不定代词'},
+   {stem:'Is there ___ in the bag?', hint:'东西', ans:['anything'], exp:'疑问句 → anything。', tag:'不定代词'},
+   {stem:"___ is ready. Let's go.", hint:'一切', ans:['everything'], exp:'一切 → everything。', tag:'不定代词'},
+   {stem:"I didn't hear ___.", hint:'东西', ans:['anything'], exp:'否定句 → anything。', tag:'不定代词'},
+   {stem:'There is ___ at home.', hint:'没人', ans:['no one','nobody'], exp:'There is no one（动词用肯定）。', tag:'不定代词'},
+   {stem:'___ wants to help me.', hint:'没有人', ans:['no one','nobody'], exp:'Nobody + 单数动词 wants。', tag:'不定代词'},
+  ]},
+  {name:'Exercise B · 肯定 / 否定 / 疑问 互改', inst:'按括号要求改写，注意 some- → any- / no-。', type:'rw', items:[
+   {stem:'There is someone in the garden.', task:'改否定', ans:["There isn't anyone in the garden",'There is not anyone in the garden','There is no one in the garden','There is nobody in the garden'], exp:"否定：isn't anyone 或 is no one。", tag:'不定代词'},
+   {stem:'I want something to eat.', task:'改疑问（主语用 you）', ans:['Do you want anything to eat'], exp:'疑问句 something → anything。', tag:'不定代词'},
+   {stem:'Everyone is here.', task:'改成"没有人在这里"', ans:['No one is here','Nobody is here'], exp:'No one / Nobody + is。', tag:'不定代词'},
+   {stem:'I saw someone at the window.', task:'改否定', ans:["I didn't see anyone at the window",'I did not see anyone at the window','I saw no one at the window','I saw nobody at the window'], exp:"didn't see anyone 或 saw no one。", tag:'不定代词'},
+   {stem:'There is something in the box.', task:'改疑问', ans:['Is there anything in the box'], exp:'疑问句 anything。', tag:'不定代词'},
+   {stem:'Someone has taken my pen.', task:'改疑问（用 anyone）', ans:['Has anyone taken my pen'], exp:'Has anyone taken…?', tag:'不定代词'},
+  ]},
+  {name:'Exercise C · 选择', inst:'选出正确的词。', type:'mc', items:[
+   {stem:'___ is knocking at the door.', opts:['Someone','Anyone'], ans:'Someone', exp:'肯定句 someone。', tag:'不定代词'},
+   {stem:"There isn't ___ at home.", opts:['anyone','someone','no one'], ans:'anyone', exp:"isn't 后面用 anyone。", tag:'不定代词'},
+   {stem:'Nobody ___ the answer.', opts:['knows','know'], ans:'knows', exp:'nobody 算单数。', tag:'不定代词'},
+   {stem:'Is there ___ in the fridge?', opts:['anything','nothing'], ans:'anything', exp:'疑问句 anything。', tag:'不定代词'},
+   {stem:'I have ___ to do today.', opts:['nothing','anything','no'], ans:'nothing', exp:'肯定句里表"没什么" → nothing。', tag:'不定代词'},
+   {stem:'Everyone ___ ready.', opts:['is','are'], ans:'is', exp:'everyone 算单数。', tag:'不定代词'},
+  ]}
+ ]
+}
+
+,
+{
+ id:'u21', tab:'过去进行时 was doing', les:'L117–118', lesson:'Lesson 118 What were you doing at 8 o’clock? I was having breakfast.',
+ title:'单元 21 · 过去进行时：那个时候正在做什么',
+ gram:`
+  <h4>公式：was / were + 动词-ing</h4>
+  <div class="fml">
+   <div class="fmlrow"><span class="fmlt">肯定</span><code>I / he / she / it <b>was</b> + doing　｜　you / we / they <b>were</b> + doing</code></div>
+   <div class="fmlrow"><span class="fmlt">疑问</span><code><b>What were</b> you <b>doing</b> at eight o'clock?</code></div>
+   <div class="fmlrow"><span class="fmlt">when</span><code>正在做 A（进行时）<b>when</b> B 发生了（一般过去时）</code></div>
+   <div class="fmlrow"><span class="fmlt">while</span><code>A 在进行（进行时）<b>while</b> B 也在进行（进行时）</code></div>
+   <div class="fmlnote">现在进行时是 am / is / are + doing，说"现在正在"；过去进行时把 be 动词换成 <b>was / were</b>，说"<b>那个时候</b>正在"。
+   -ing 的拼写和现在进行时一样：have → hav<b>ing</b>，sit → si<b>tt</b>ing。</div>
+  </div>
+  <h4>例句拆解</h4>
+  <div class="bd">
+   <div class="bdrow">
+    <span class="bdc s"><b>I</b></span>
+    <span class="bdc v"><b>was having</b><i>那时正在</i></span>
+    <span class="bdc x"><b>breakfast</b></span>
+    <span class="bdc a"><b>when</b><i>这时候</i></span>
+    <span class="bdc x"><b>the phone rang</b><i>短动作，过去时</i></span>
+   </div>
+   <div class="bdzh">电话响的时候我正在吃早饭。—— 长的、正在进行的动作用 was doing；突然发生的短动作用一般过去时。</div>
+  </div>
+  <div class="caution"><span class="label">易错提醒</span>
+  ① <span class="no">✗ I were having</span> → <span class="yes">✓ I <b>was</b> having</span>；<span class="no">✗ They was</span> → <span class="yes">✓ They <b>were</b></span>。<br>
+  ② when 后面的短动作不要也写成进行时：<span class="no">✗ when the phone was ringing</span> → <span class="yes">✓ when the phone rang</span>。<br>
+  ③ 问"那时在干嘛"用 What were you doing，不是 What did you doing。</div>`,
+ ex:[
+  {name:'Exercise A · 填 was / were + -ing（L118 A 同款）', inst:'用括号里动词的过去进行时填空。', type:'fill', items:[
+   {stem:"At eight o'clock I ___ breakfast.", hint:'have', ans:['was having'], exp:'I → was having。', tag:'过去进行时构成'},
+   {stem:'They ___ football when it started to rain.', hint:'play', ans:['were playing'], exp:'they → were playing。', tag:'过去进行时构成'},
+   {stem:'She ___ a letter at nine last night.', hint:'write', ans:['was writing'], exp:'write 去 e 加 ing → writing。', tag:'过去进行时构成'},
+   {stem:'We ___ TV when you telephoned.', hint:'watch', ans:['were watching'], exp:'we → were watching。', tag:'过去进行时构成'},
+   {stem:"What were you ___ at ten o'clock?", hint:'do', ans:['doing'], exp:'were 已给，填 doing。', tag:'过去进行时构成'},
+   {stem:'The children ___ in the garden when I arrived.', hint:'sleep', ans:['were sleeping'], exp:'复数 → were sleeping。', tag:'过去进行时构成'},
+   {stem:'He ___ to the radio while she was cooking.', hint:'listen', ans:['was listening'], exp:'he → was listening。', tag:'过去进行时构成'},
+   {stem:'I ___ the dishes when the phone rang.', hint:'wash', ans:['was washing'], exp:'I → was washing。', tag:'过去进行时构成'},
+   {stem:'Tommy ___ his breakfast when his mother came in.', hint:'eat', ans:['was eating'], exp:'Tommy → was eating。', tag:'过去进行时构成'},
+   {stem:'It ___ when we left the house.', hint:'rain', ans:['was raining'], exp:'it → was raining。', tag:'过去进行时构成'},
+  ]},
+  {name:'Exercise B · 回答 What were you doing…?（L118 B 同款）', inst:'用括号里的提示写一句完整回答。', type:'rw',
+   demo:[{stem:"What were you doing at seven?（read the paper）", lines:[
+     {label:'回答', s:'I was reading the paper.', note:'主语 + was / were + 动词-ing'}]}], items:[
+   {stem:"What were you doing at eight o'clock this morning?（have breakfast）", task:'回答', ans:['I was having breakfast'], exp:'I was having。', tag:'过去进行时构成'},
+   {stem:'What was she doing at nine?（read a book）', task:'回答', ans:['She was reading a book'], exp:'she was reading。', tag:'过去进行时构成'},
+   {stem:'What were they doing at ten?（play football）', task:'回答', ans:['They were playing football'], exp:'they were playing。', tag:'过去进行时构成'},
+   {stem:'What was Tom doing when you saw him?（wait for a bus）', task:'用 He 回答', ans:['He was waiting for a bus'], exp:'he was waiting for。', tag:'过去进行时构成'},
+   {stem:'What were you doing when the phone rang?（sleep）', task:'回答', ans:['I was sleeping'], exp:'I was sleeping。', tag:'过去进行时构成'},
+   {stem:'What was your mother doing at seven?（cook dinner）', task:'用 She 回答', ans:['She was cooking dinner'], exp:'she was cooking。', tag:'过去进行时构成'},
+  ]},
+  {name:'Exercise C · 用 when / while 合成一句', inst:'把两句合成一句，第一句在前。', type:'rw',
+   demo:[{match:'when', stem:'I was reading. The phone rang.（when）', lines:[
+     {label:'when', s:'I was reading when the phone rang.', note:'正在做 + when + 短动作（过去时）'}]},
+     {match:'while', stem:'She was cooking. He was reading.（while）', lines:[
+     {label:'while', s:'She was cooking while he was reading.', note:'两边都在进行 → while，两边都用 was / were doing'}]}], items:[
+   {stem:'I was reading. The phone rang.（when）', task:'合成一句', ans:['I was reading when the phone rang','When the phone rang, I was reading','When the phone rang I was reading'], exp:'was reading when the phone rang。', tag:'when / while'},
+   {stem:'They were having dinner. Someone knocked at the door.（when）', task:'合成一句', ans:['They were having dinner when someone knocked at the door'], exp:'when + 过去时短动作。', tag:'when / while'},
+   {stem:'She was cooking. He was reading.（while）', task:'合成一句', ans:['She was cooking while he was reading','While she was cooking, he was reading','While she was cooking he was reading'], exp:'while 两边都进行时。', tag:'when / while'},
+   {stem:'We were walking home. It began to rain.（when）', task:'合成一句', ans:['We were walking home when it began to rain'], exp:'began 过去时。', tag:'when / while'},
+   {stem:'Tom was sleeping. His mother came in.（when）', task:'合成一句', ans:['Tom was sleeping when his mother came in'], exp:'came in 过去时。', tag:'when / while'},
+   {stem:'I was washing the car. My wife was working in the garden.（while）', task:'合成一句', ans:['I was washing the car while my wife was working in the garden'], exp:'while 两边都进行时。', tag:'when / while'},
+  ]},
+  {name:'Exercise D · 选择', inst:'选出正确的形式。', type:'mc', items:[
+   {stem:'What ___ you doing at eight?', opts:['were','was','are'], ans:'were', exp:'you → were。', tag:'过去进行时构成'},
+   {stem:'I ___ having breakfast.', opts:['was','were','am'], ans:'was', exp:'I → was。', tag:'过去进行时构成'},
+   {stem:'They were ___ football.', opts:['playing','play','played'], ans:'playing', exp:'were + -ing。', tag:'过去进行时构成'},
+   {stem:'She was reading ___ he came in.', opts:['when','while','and'], ans:'when', exp:'came in 是短动作 → when。', tag:'when / while'},
+  ]}
+ ]
+}
+
+,
+{
+ id:'u22', tab:'过去完成时 had done', les:'L119–120', lesson:'Lesson 120 After they had entered the house, they went into the dining room.',
+ title:'单元 22 · 过去完成时：过去的过去',
+ gram:`
+  <h4>公式：had + 过去分词（所有人称都是 had）</h4>
+  <div class="fml">
+   <div class="fmlrow"><span class="fmlt">结构</span><code>主语 + <b>had</b> + 过去分词　（I had left / they had gone）</code></div>
+   <div class="fmlrow"><span class="fmlt">after</span><code><b>After</b> A <b>had</b> done, B did.　（先 A 后 B）</code></div>
+   <div class="fmlrow"><span class="fmlt">when</span><code><b>When</b> B did, A <b>had</b> already done.　（B 发生时 A 早已完成）</code></div>
+   <div class="fmlnote">两件过去的事，<b>先发生的那件用 had done</b>，后发生的用一般过去时。
+   现在完成时 have done 是"到现在为止"；过去完成时 had done 是"到过去某一刻为止"——把 have / has 统统换成 <b>had</b> 就行，过去分词不变。</div>
+  </div>
+  <h4>例句拆解</h4>
+  <div class="bd">
+   <div class="bdrow">
+    <span class="bdc a"><b>After</b><i>在…之后</i></span>
+    <span class="bdc s"><b>they</b></span>
+    <span class="bdc v"><b>had entered</b><i>先发生：had + p.p.</i></span>
+    <span class="bdc x"><b>the house,</b></span>
+    <span class="bdc s"><b>they</b></span>
+    <span class="bdc v"><b>went</b><i>后发生：过去时</i></span>
+    <span class="bdc x"><b>into the dining room</b></span>
+   </div>
+   <div class="bdzh">他们进了房子之后，走进了餐厅。—— 进房子在前 → had entered；进餐厅在后 → went。</div>
+  </div>
+  <div class="bd">
+   <div class="bdrow">
+    <span class="bdc a"><b>When</b></span>
+    <span class="bdc s"><b>I</b></span>
+    <span class="bdc v"><b>arrived,</b><i>后发生</i></span>
+    <span class="bdc s"><b>the train</b></span>
+    <span class="bdc v"><b>had left</b><i>先发生（早走了）</i></span>
+   </div>
+   <div class="bdzh">我到的时候，火车已经开走了。—— 到站是"过去"，火车开走是"过去的过去"。</div>
+  </div>
+  <div class="caution"><span class="label">易错提醒</span>
+  ① had 后面是<b>过去分词</b>不是过去式：<span class="no">✗ had went</span> → <span class="yes">✓ had gone</span>。<br>
+  ② had 没有人称变化：<span class="no">✗ he has left（讲过去）</span> → <span class="yes">✓ he had left</span>。<br>
+  ③ 只有一件事、或者按顺序讲故事，不需要 had：<span class="eg">He came in and sat down.</span></div>`,
+ ex:[
+  {name:'Exercise A · 填 had + 过去分词（L120 A 同款）', inst:'用括号里动词的过去完成时填空。', type:'fill', items:[
+   {stem:'After they ___ the house, they went into the dining room.', hint:'enter', ans:['had entered'], exp:'先进房子 → had entered。', tag:'过去完成时构成'},
+   {stem:'When I arrived, the train ___.', hint:'leave', ans:['had left'], exp:'leave–left–left。', tag:'过去完成时构成'},
+   {stem:'He ___ his homework before he went out.', hint:'finish', ans:['had finished'], exp:'先做完作业 → had finished。', tag:'过去完成时构成'},
+   {stem:'She told me that she ___ the film.', hint:'see', ans:['had seen'], exp:'see–saw–seen。', tag:'过去完成时构成'},
+   {stem:"By nine o'clock they ___ dinner.", hint:'have', ans:['had had'], exp:'have–had–had → had had（两个 had 都对）。', tag:'过去完成时构成'},
+   {stem:'When we got to the cinema, the film ___.', hint:'start', ans:['had started'], exp:'电影先开始 → had started。', tag:'过去完成时构成'},
+   {stem:'The thieves ran away after they ___ a voice.', hint:'hear', ans:['had heard'], exp:'hear–heard–heard。', tag:'过去完成时构成'},
+   {stem:'I had never ___ a parrot before.', hint:'see', ans:['seen'], exp:'had 已给，填过去分词 seen。', tag:'过去完成时构成'},
+   {stem:'After George ___ the light, he went to bed.', hint:'turn off', ans:['had turned off'], exp:'先关灯 → had turned off。', tag:'过去完成时构成'},
+   {stem:'They had already ___ when I came.', hint:'go', ans:['gone'], exp:'go–went–gone，had 后面用 gone。', tag:'过去完成时构成'},
+  ]},
+  {name:'Exercise B · 两句并一句（L120 B 同款）', inst:'两件事按发生顺序给出，用括号里的连接词合成一句：先发生的用 had done。', type:'rw',
+   demo:[{match:'After', stem:'He read the letter. Then he telephoned his wife.（After …）', lines:[
+     {label:'After', s:'After he had read the letter, he telephoned his wife.', note:'先发生 → had + p.p.；后发生 → 过去时，逗号隔开'}]},
+     {match:'When', stem:'The bus left. Then we got to the bus stop.（When we got …）', lines:[
+     {label:'When', s:'When we got to the bus stop, the bus had left.', note:'"到的时候…已经…了" → 后半句用 had done'}]}], items:[
+   {stem:'They entered the house. Then they went into the dining room.（After …）', task:'合成一句', ans:['After they had entered the house, they went into the dining room','After they had entered the house they went into the dining room'], exp:'After they had entered…, they went…', tag:'过去完成时 after / when'},
+   {stem:'The train left. Then I arrived at the station.（When I arrived …）', task:'合成一句', ans:['When I arrived at the station, the train had left','When I arrived at the station the train had left'], exp:'到站时火车早走了 → had left。', tag:'过去完成时 after / when'},
+   {stem:'He finished his work. Then he went home.（After …）', task:'合成一句', ans:['After he had finished his work, he went home','After he had finished his work he went home'], exp:'had finished → went。', tag:'过去完成时 after / when'},
+   {stem:'She had dinner. Then she watched TV.（After …）', task:'合成一句', ans:['After she had had dinner, she watched TV','After she had had dinner she watched TV'], exp:'had had dinner。', tag:'过去完成时 after / when'},
+   {stem:'The film started. Then we got to the cinema.（When we got …）', task:'合成一句', ans:['When we got to the cinema, the film had started','When we got to the cinema the film had started'], exp:'电影先开始 → had started。', tag:'过去完成时 after / when'},
+   {stem:'They heard a voice. Then they dropped the torch.（After …）', task:'合成一句', ans:['After they had heard a voice, they dropped the torch','After they had heard a voice they dropped the torch'], exp:'had heard → dropped。', tag:'过去完成时 after / when'},
+  ]},
+  {name:'Exercise C · 选择', inst:'选出正确的形式。', type:'mc', items:[
+   {stem:'After they ___ the house, they went into the kitchen.', opts:['had entered','entered','have entered'], ans:'had entered', exp:'先发生 → had entered。', tag:'过去完成时构成'},
+   {stem:'When I arrived, the train ___.', opts:['had left','has left','leaves'], ans:'had left', exp:'过去的过去 → had left。', tag:'过去完成时构成'},
+   {stem:'He ___ his homework before he went out.', opts:['had finished','has finished','finish'], ans:'had finished', exp:'before 前面的事先完成。', tag:'过去完成时构成'},
+   {stem:'She said that she ___ the film.', opts:['had seen','has seen','see'], ans:'had seen', exp:'said 过去 → 从句 had seen。', tag:'过去完成时构成'},
+   {stem:"By nine o'clock they ___ dinner.", opts:['had had','have had','had'], ans:'had had', exp:'had + had。', tag:'过去完成时构成'},
+   {stem:'___ they had heard the voice, they ran away.', opts:['After','Before','While'], ans:'After', exp:'先听到再跑 → After。', tag:'过去完成时 after / when'},
+  ]}
+ ]
+}
+
 ];
 
 /* ============ 状态 ============ */
@@ -1809,7 +2516,7 @@ function demoKey(b){ return b.stem+'|'+(b.lines||[]).map(l=>l.s).join('|'); }
    "一组同样的题 → 一份例句在最上面"。其它题的相对顺序不动。 */
 function groupByDemo(list, getRec){
   getRec=getRec||(x=>x);
-  const keyOf=x=>{ const r=getRec(x); const dm=(r&&r.ex&&r.ex.type==='multi')?pickDemo(r.ex,r.item):null; return dm?demoKey(dm):null; };
+  const keyOf=x=>{ const r=getRec(x); const dm=(r&&r.ex&&(r.ex.type==='multi'||r.ex.type==='rw'))?pickDemo(r.ex,r.item):null; return dm?demoKey(dm):null; };
   const out=[], pos={};
   list.forEach(x=>{
     const k=keyOf(x);
@@ -1827,6 +2534,14 @@ function pickDemo(ex,it){
   if(!blocks||!blocks.length) return null;
   if(blocks.length===1) return blocks[0];
   const first=s2=>norm(s2||'').split(' ')[0];
+  if(!it.parts){
+    // 单行题：例句块可带 match（正则，对题目要求 + 题干匹配）；没有就按答案首词
+    const hay=(it.task||'')+' '+(it.stem||'');
+    const bm=blocks.find(b=>b.match && new RegExp(b.match).test(hay));
+    if(bm) return bm;
+    const mine=first((ansList(it)||[])[0]);
+    return blocks.find(b=>first(b.lines[0].s)===mine)||blocks[0];
+  }
   const p0=(it.parts||[])[0];
   const mine=first(p0&&p0.ans&&p0.ans[0]);
   return blocks.find(b=>first(b.lines[0].s)===mine)||blocks[0];
@@ -1867,7 +2582,8 @@ function feedbackHTML(ok, given, it, ex){
   return '✗ 错了 —— 正确答案：<span class="ans">'+ansArr[0]+'</span>'
     + (ansArr.length>1?'<div class="exp" style="border:none;padding:0;margin-top:3px">也可以写：'+ansArr.slice(1).join(' / ')+'</div>':'')
     + (diff?'<div class="exp"><b>哪里错了：</b>'+diff.msg+'</div>':'')
-    + '<div class="exp"><b>为什么：</b>'+it.exp+'</div>';
+    + '<div class="exp"><b>为什么：</b>'+it.exp+'</div>'
+    + egLine(ex, it, 0);
 }
 
 /* 这道题考的是什么语法点（用来做知识点维度的统计） */
@@ -1918,6 +2634,16 @@ function lessonOf(rec){
   if(u==='u9') return 95;                 // had better / in…time 出自 L95–96
   if(u==='u10') return 97;                // 物主代词 / belong to 出自 L97–98
   if(u==='u11') return 99;                // that 从句出自 L99–100
+  if(u==='u13') return 101;               // 间接引语 says that 出自 L101–102
+  if(u==='u14') return 103;               // too / enough 出自 L103–104
+  if(u==='u15') return 105;               // tell sb to do / put it on 出自 L105–106
+  if(u==='u16') return 107;               // 比较级出自 L107–108
+  if(u==='u17') return 109;               // more / less / fewer 出自 L109–110
+  if(u==='u18') return 111;               // 最高级 / as…as 出自 L111–112
+  if(u==='u19') return 113;               // some / any / none · So do I 出自 L113–114
+  if(u==='u20') return 115;               // 不定代词出自 L115–116
+  if(u==='u21') return 117;               // 过去进行时出自 L117–118
+  if(u==='u22') return 119;               // 过去完成时出自 L119–120
   return null;
 }
 function lessonLabel(L){ return L?('L'+L+'–'+(L+1)):'课外补充'; }
@@ -1939,13 +2665,13 @@ function dueDays(rec){
   return days>=step ? days : null;
 }
 
-function buildDaily(n){
+function buildDaily(n, exclude){
   n=n||DAILY_N;
   const L=curLesson();
   const learned=ALL.filter(r=>{ const l=lessonOf(r); return l!==null && l<=L; });
   const extra  =ALL.filter(r=>lessonOf(r)===null);   // 课外补充，只在题不够时补进来
 
-  const picked=[], seen={};
+  const picked=[], seen=Object.assign({}, exclude||{});
   const take=(list,k,why)=>{
     for(const r of list){
       if(picked.length>=n||k<=0) break;
@@ -1983,9 +2709,9 @@ function buildDaily(n){
 }
 
 /* 今天该练哪些单词题：本课没做过的优先，其次是到期该回炉的 */
-function buildDailyWords(n){
+function buildDailyWords(n, exclude){
   n=n||WORD_GOAL;
-  const L=curLesson(), all=allWordItems(L), out=[], seen={};
+  const L=curLesson(), all=allWordItems(L), out=[], seen=Object.assign({}, exclude||{});
 
   // 「先认后拼」：认读题没答对过之前，不出这个词的拼写题
   const recogOK={};
@@ -2007,6 +2733,58 @@ function buildDailyWords(n){
   return out;
 }
 
+/* ==========================================================================
+ * 当天作业清单固定（2026-09-20）
+ * 以前每次渲染都重新 buildDaily()：交完卷已答的题被过滤掉、又抽出一批新题，
+ * 顶部就显示 0/7、侧栏却说"今天已完成"。现在第一次进页面就把当天抽到的题存下来，
+ * 一天之内不变；全部答完 = 完成态。想多做走「加练」页，另一套清单，不动今天的进度。
+ * ========================================================================== */
+const TODAY_KEY='nce1-pp-today';
+function doneToday(key){ const x=S[key]; return !!(x && x.at && todayStr(x.at)===todayStr()); }
+function todayPlan(){
+  // 当天按课次各存一份：{date, plans:{96:{gram,words,legacy}, 97:{…}}}
+  // 课次 +1 学新课会抽一份新的；再 −1 回来还能找回做完的那份，完成态不丢
+  const t=todayStr(), L=curLesson();
+  let st=null; try{ st=JSON.parse(localStorage.getItem(TODAY_KEY)||'null'); }catch(e){ st=null; }
+  if(!st || st.date!==t || !st.plans) st={date:t, plans:{}};
+  const byKeyG={}; ALL.forEach(r=>byKeyG[r.key]=r);
+  const byKeyW={}; allWordItems(L).forEach(r=>byKeyW[r.key]=r);
+  const saveSt=()=>{ try{ localStorage.setItem(TODAY_KEY, JSON.stringify(st)); }catch(e){} };
+  const hydrate=pl=>({
+    legacy: !!pl.legacy,
+    gram: (pl.gram||[]).map(x=>byKeyG[x.key]?{rec:byKeyG[x.key], why:x.why}:null).filter(Boolean),
+    words:(pl.words||[]).map(x=>byKeyW[x.key]?{rec:byKeyW[x.key], why:x.why}:null).filter(Boolean)
+  });
+  if(st.plans[L]) return hydrate(st.plans[L]);
+  // 更新之前就已经交过今天的卷（今天一份清单都没有）：不再抽新题，直接记成"今天已完成"
+  const dRec=loadDays()[t];
+  if(dRec && dRec.n>=DAILY_N && !Object.keys(st.plans).length){
+    st.plans[L]={legacy:true, gram:[], words:[]}; saveSt();
+    return {legacy:true, gram:[], words:[]};
+  }
+  const gram=buildDaily(), words=buildDailyWords();
+  st.plans[L]={gram:gram.map(x=>({key:x.rec.key, why:x.why})), words:words.map(x=>({key:x.rec.key, why:x.why}))};
+  saveSt();
+  return {legacy:false, gram:gram, words:words};
+}
+/* 今天算不算做完：清单里每题都在今天答过；没题可做的日子交过卷也算 */
+function isDayDone(plan){
+  plan=plan||todayPlan();
+  if(plan.legacy) return true;
+  const all=plan.gram.concat(plan.words);
+  if(!all.length){ const d=loadDays()[todayStr()]; return !!d; }
+  return all.every(x=>doneToday(x.rec.key));
+}
+/* 加练：排除今天清单里的题和今天已经答过的题，另抽一组 */
+const EXTRA_N=8;
+let EXTRA_SET=null;
+function buildExtra(){
+  const plan=todayPlan(), ex={};
+  plan.gram.forEach(x=>ex[x.rec.key]=1);
+  ALL.forEach(r=>{ if(doneToday(r.key)) ex[r.key]=1; });
+  return buildDaily(EXTRA_N, ex);
+}
+
 const DONE_KEY='nce1-pp-days';
 function loadDays(){ try{ return JSON.parse(localStorage.getItem(DONE_KEY)||'{}'); }catch(e){ return {}; } }
 function markDayDone(n,ok){
@@ -2024,6 +2802,7 @@ function wrongList(){ return ALL.filter(r=>S[r.key] && S[r.key].ok===false); }
 const tools=document.getElementById('tools');
 const daynav=document.getElementById('daynav');
 const tabs2=document.getElementById('tabs2');
+const tabs3=document.getElementById('tabs3');
 
 function navItem(opts){
   const b=document.createElement('button');
@@ -2041,10 +2820,9 @@ function navItem(opts){
 
 function renderTabs(){
   daynav.innerHTML='';
-  const dRec=loadDays()[todayStr()];
-  const dList=buildDaily(), dWords=buildDailyWords().length;
-  // 题库做完、没到期错题的日子，作业本来就少于 16 题：做完了（列表空）也算今天完成
-  const dayDone=!!dRec && (dRec.n>=DAILY_N || (dList.length+dWords)===0);
+  const plan=todayPlan();
+  const dList=plan.gram, dWords=plan.words.length;
+  const dayDone=isDayDone(plan);
   daynav.appendChild(navItem({
     name:'今日作业',
     badge: dayDone ? '今天已完成'
@@ -2060,6 +2838,14 @@ function renderTabs(){
     meta: twN?'一键看错在哪 · 只重写这 '+twN+' 题':'今天还没有错题',
     on:view==='TWRONG',
     go:()=>goTodayWrong('look')
+  }));
+  const dEx=loadDays()[todayStr()];
+  daynav.appendChild(navItem({
+    name:'加练', badge: (dEx&&dEx.extra)?('今天 +'+dEx.extra):'',
+    badgeKind: 'ok',
+    meta: dayDone?'作业做完了 · 另抽一组，不算进今天进度':'先做完今日作业再来',
+    on:view==='EXTRA',
+    go:()=>{ view='EXTRA'; EXTRA_SET=null; render(); scrollTo(0,0); }
   }));
 
   const sl=storyLessonFor(curLesson());
@@ -2088,9 +2874,9 @@ function renderTabs(){
     on:view==='EXAM', go:()=>{EXAM=null;view='EXAM';render();scrollTo(0,0)}
   }));
 
-  tabs.innerHTML=''; tabs2.innerHTML='';
+  tabs.innerHTML=''; tabs2.innerHTML=''; tabs3.innerHTML='';
   const mapBtn=navItem({
-    name:'语法汇总（先看这个）', meta:'L83–100 全部语法 · 标注必掌握／仅了解',
+    name:'语法汇总（先看这个）', meta:'L83–120 全部语法 · 标注必掌握／仅了解',
     on:view==='MAP', go:()=>{view='MAP';render();scrollTo(0,0)}
   });
   tabs.appendChild(mapBtn);
@@ -2099,7 +2885,7 @@ function renderTabs(){
     const done=items.filter(r=>S[r.key]).length;
     const ok=items.filter(r=>S[r.key]&&S[r.key].ok).length;
     const pct=Math.round(done/items.length*100);
-    (['u7','u8','u9','u10','u11'].indexOf(u.id)>=0 ? tabs2 : tabs).appendChild(navItem({
+    (['u13','u14','u15','u16','u17','u18','u19','u20','u21','u22'].indexOf(u.id)>=0 ? tabs3 : ['u7','u8','u9','u10','u11'].indexOf(u.id)>=0 ? tabs2 : tabs).appendChild(navItem({
       name:u.tab,
       meta:(IMPORTANCE[u.id]?IMPORTANCE[u.id].tag+'　':'')+(u.les||'')+'　'+done+'/'+items.length+' 题',
       pct:pct,
@@ -2247,6 +3033,12 @@ function itemCard(rec,idx,opts){
     };
   } else {
     if(rec.ex.type==='rw'){
+      // 单行改写题也可以配例句（2026-09-20：L96 B 这种"照原书格式回答"的题没例句，用户不知道该怎么写）
+      const dm=pickDemo(rec.ex,it);
+      if(dm && !DEMO_SEEN.has(demoKey(dm))){
+        DEMO_SEEN.add(demoKey(dm));
+        qb.insertAdjacentHTML('beforeend', demoHTML(dm));
+      }
       textInput=document.createElement('input'); textInput.type='text';
       textInput.placeholder='把整句写在这里'; textInput.className='fullin';
       qb.appendChild(textInput);
@@ -2381,6 +3173,56 @@ const MUST={
   {en:'I think that I have hurt my back.', zh:'我觉得我把背弄伤了。', why:'99 课课文原句，从句里用现在完成时'},
   {en:'The doctor says that he will come at once.', zh:'医生说他马上就来。', why:'从句里可以套将来时 will come'}
  ],
+ u13:[
+  {en:'He says that he is having a wonderful holiday.', zh:'他说他正在度一个很棒的假期。', why:'I → he，am → is，其它照抄：转述的骨架'},
+  {en:'What does he say?', zh:'他说什么？', why:'问法固定：does + say 原形'},
+  {en:'Mary says that she has lost her umbrella.', zh:'玛丽说她把伞弄丢了。', why:'人称、have→has、my→her 三处连动'}
+ ],
+ u14:[
+  {en:'The exam was too difficult.', zh:'考试太难了。', why:'too 放形容词前面'},
+  {en:'The questions were not easy enough.', zh:'题目不够容易。', why:'enough 放形容词后面——最容易放反'},
+  {en:'He is too young to drive a car.', zh:'他太小了，不能开车。', why:'too … to do 一步到位，不再加 can\'t'}
+ ],
+ u15:[
+  {en:'Tell him to come here.', zh:'叫他过来。', why:'tell + 人 + to + 原形'},
+  {en:'Ask her not to be late.', zh:'请她别迟到。', why:'否定是 not to，不是 don\'t'},
+  {en:'Put it on. / Take them off.', zh:'穿上它。／把它们脱掉。', why:'代词只能夹在短语动词中间'}
+ ],
+ u16:[
+  {en:'This shirt is cheaper than that one.', zh:'这件衬衫比那件便宜。', why:'-er + than，one 代替重复的名词'},
+  {en:'This dress is more expensive than that one.', zh:'这条裙子比那条贵。', why:'长词前面加 more，不加 -er'},
+  {en:'Your case is much heavier than mine.', zh:'你的箱子比我的重得多。', why:'much + 比较级；heavy → heavier'}
+ ],
+ u17:[
+  {en:'I have more money than you.', zh:'我的钱比你多。', why:'much / many 的比较级都是 more'},
+  {en:'Tom has fewer books than Jim.', zh:'汤姆的书比吉姆少。', why:'可数用 fewer，不可数用 less'},
+  {en:'This coffee is better than that.', zh:'这杯咖啡比那杯好。', why:'good → better，bad → worse，必背'}
+ ],
+ u18:[
+  {en:'This is the most expensive model in the shop.', zh:'这是店里最贵的型号。', why:'the + most + 长形容词 + 范围'},
+  {en:'It is the cheapest shirt I have.', zh:'这是我最便宜的一件衬衫。', why:'短词 the -est'},
+  {en:'Tom is as tall as Jim.', zh:'汤姆和吉姆一样高。', why:'as + 原级 + as，中间不变形'}
+ ],
+ u19:[
+  {en:'Have you got any small change?', zh:'你有零钱吗？', why:'疑问句用 any'},
+  {en:"I've got none.", zh:'我一点也没有。', why:'none 单独用，后面不跟名词'},
+  {en:'I like coffee. So does Tom.', zh:'我喜欢咖啡。汤姆也是。', why:'So + 助动词 + 主语，主语放最后'}
+ ],
+ u20:[
+  {en:'Is there anyone at the door?', zh:'门口有人吗？', why:'疑问句用 any-'},
+  {en:'There is no one at home.', zh:'家里没人。', why:'no one 自带否定，动词用肯定 is'},
+  {en:'Everyone is ready.', zh:'大家都准备好了。', why:'everyone 算单数 → is'}
+ ],
+ u21:[
+  {en:"I was having breakfast at eight o'clock.", zh:'八点钟我正在吃早饭。', why:'was / were + doing 说"那时正在"'},
+  {en:'What were you doing when the phone rang?', zh:'电话响的时候你在干什么？', why:'进行时 + when + 过去时短动作'},
+  {en:'She was cooking while he was reading.', zh:'她在做饭，他在看书。', why:'while 两边都是进行时'}
+ ],
+ u22:[
+  {en:'After they had entered the house, they went into the dining room.', zh:'他们进了房子之后，走进了餐厅。', why:'先发生 had done，后发生过去时'},
+  {en:'When I arrived, the train had left.', zh:'我到的时候火车已经开走了。', why:'"到的时候已经…了"用 had done'},
+  {en:'He had never seen a parrot before.', zh:'他以前从没见过鹦鹉。', why:'had + 过去分词，never 放中间'}
+ ],
  u1:[
   {en:'I have finished my homework.', zh:'我已经把作业做完了。', why:'肯定式的标准骨架，have + 过去分词'},
   {en:"He hasn't cleaned the windows.", zh:'他还没擦窗户。', why:'否定式：has + not，动词形式不变'},
@@ -2423,6 +3265,16 @@ const IMPORTANCE={
  u9:{lv:2, tag:'常用', why:'had better 口语高频；in…time 和 for/since 最容易混'},
  u10:{lv:3, tag:'必掌握', why:'mine/yours/hers 这类词考试和口语都高频，且中文里没有对应形式'},
  u11:{lv:2, tag:'常用', why:'that 从句是复合句的入门，98 课以后课文里到处都是'},
+ u13:{lv:3, tag:'必掌握', why:'转述别人的话是第二册的基础，人称连动最容易漏'},
+ u14:{lv:2, tag:'常用', why:'too / enough 位置相反，口语高频'},
+ u15:{lv:3, tag:'必掌握', why:'tell sb to do 和 put it on 两个都是日常指令的骨架'},
+ u16:{lv:3, tag:'必掌握', why:'比较级是形容词变化的起点，拼写规则要背'},
+ u17:{lv:2, tag:'常用', why:'less / fewer 和四个不规则比较级'},
+ u18:{lv:3, tag:'必掌握', why:'最高级 + as…as，和比较级一起构成完整的比较体系'},
+ u19:{lv:2, tag:'常用', why:'some / any / none 复习 + So do I 是口语最常用的附和'},
+ u20:{lv:2, tag:'常用', why:'不定代词：肯定 some-、疑问否定 any-、no- 自带否定'},
+ u21:{lv:3, tag:'必掌握', why:'过去进行时和过去时搭配讲故事，第二册课文的主时态之一'},
+ u22:{lv:3, tag:'必掌握', why:'过去完成时：过去的过去，after / when 的时态搭配'},
  u1:{lv:3, tag:'必掌握', why:'整个时态的骨架，后面所有内容都建在它上面'},
  u2:{lv:3, tag:'必掌握', why:'83–88 课连着三个课对操练，考试最常考位置题'},
  u4:{lv:3, tag:'必掌握', why:'现在完成时最大的考点，86 课起成为专门题型'},
@@ -2567,7 +3419,91 @@ const WORDS={
   {w:'penny',   ph:'/ˈpeni/',   pos:'n.',    cn:'便士', eg:'It is worth every penny.', egzh:'一分钱都不亏。'},
   {w:'why',     ph:'/waɪ/',     pos:'adv.',  cn:'为什么', eg:'Why have you sold it?', egzh:'你为什么把它卖了？'},
   {w:'may',     ph:'/meɪ/',     pos:'modal',cn:'可以（请求许可）', eg:'May I see it?', egzh:'我可以看看吗？'}
- ]
+ ],
+ 101:[
+  {w:'card',      ph:'/kɑːd/',        pos:'n.',   cn:'明信片；卡片', eg:'I have got a card from Jimmy.', egzh:'我收到了吉米寄来的明信片。'},
+  {w:'holiday',   ph:'/ˈhɒlədeɪ/',    pos:'n.',   cn:'假期', eg:'He is having a wonderful holiday.', egzh:'他正在度一个很棒的假期。'},
+  {w:'wonderful', ph:'/ˈwʌndəfl/',    pos:'adj.', cn:'精彩的，极好的', eg:'The weather is wonderful.', egzh:'天气好极了。'},
+  {w:'hotel',     ph:'/həʊˈtel/',     pos:'n.',   cn:'旅馆', eg:'He is staying at a hotel.', egzh:'他住在一家旅馆里。'},
+  {w:'lend',      ph:'/lend/',        pos:'v.',   cn:'借出，借给', three:['lend','lent','lent'], eg:'He says that he has lent his money to a friend.', egzh:'他说他把钱借给了一个朋友。'},
+  {w:'say',       ph:'/seɪ/',         pos:'v.',   cn:'说', three:['say','said','said'], eg:'What does he say?', egzh:'他说什么？'}
+ ],
+ 103:[
+  {w:'exam',      ph:'/ɪɡˈzæm/',      pos:'n.',   cn:'考试', eg:'How was the exam?', egzh:'考试怎么样？'},
+  {w:'pass',      ph:'/pɑːs/',        pos:'v.',   cn:'通过（考试）', eg:'I hope I will pass.', egzh:'我希望我能通过。'},
+  {w:'fail',      ph:'/feɪl/',        pos:'v.',   cn:'不及格，失败', eg:'I am sure I will fail.', egzh:'我肯定不及格。'},
+  {w:'difficult', ph:'/ˈdɪfɪkəlt/',   pos:'adj.', cn:'困难的', eg:'The exam was too difficult.', egzh:'考试太难了。'},
+  {w:'easy',      ph:'/ˈiːzi/',       pos:'adj.', cn:'容易的', eg:'The questions were not easy enough.', egzh:'题目不够容易。'},
+  {w:'enough',    ph:'/ɪˈnʌf/',       pos:'adj./adv.', cn:'足够（的）', eg:'There is enough time.', egzh:'时间够用。'},
+  {w:'mark',      ph:'/mɑːk/',        pos:'n.',   cn:'分数', eg:'I got a good mark.', egzh:'我得了个好分数。'}
+ ],
+ 105:[
+  {w:'mistake',   ph:'/mɪˈsteɪk/',    pos:'n.',   cn:'错误', eg:'The letter is full of mistakes.', egzh:'这封信全是错。'},
+  {w:'letter',    ph:'/ˈletə/',       pos:'n.',   cn:'信', eg:'Please type this letter again.', egzh:'请把这封信重打一遍。'},
+  {w:'type',      ph:'/taɪp/',        pos:'v.',   cn:'打字', eg:'Ask her to type it.', egzh:'请她把它打出来。'},
+  {w:'boss',      ph:'/bɒs/',         pos:'n.',   cn:'老板', eg:'The boss wants to see you.', egzh:'老板想见你。'},
+  {w:'careful',   ph:'/ˈkeəfl/',      pos:'adj.', cn:'仔细的，小心的', eg:'Tell him to be careful.', egzh:'叫他小心点。'},
+  {w:'file',      ph:'/faɪl/',        pos:'n.',   cn:'文件夹；档案', eg:'Put it in the file.', egzh:'把它放进文件夹。'}
+ ],
+ 107:[
+  {w:'size',      ph:'/saɪz/',        pos:'n.',   cn:'尺码，大小', eg:'What size do you take?', egzh:'你穿多大码？'},
+  {w:'large',     ph:'/lɑːdʒ/',       pos:'adj.', cn:'大的', eg:'Have you got a larger one?', egzh:'你有大一点的吗？'},
+  {w:'expensive', ph:'/ɪkˈspensɪv/',  pos:'adj.', cn:'昂贵的', eg:'This one is more expensive than that one.', egzh:'这个比那个贵。'},
+  {w:'cheap',     ph:'/tʃiːp/',       pos:'adj.', cn:'便宜的', eg:'This shirt is cheaper.', egzh:'这件衬衫便宜些。'},
+  {w:'quality',   ph:'/ˈkwɒləti/',    pos:'n.',   cn:'质量', eg:'The quality is better.', egzh:'质量更好。'},
+  {w:'blouse',    ph:'/blaʊz/',       pos:'n.',   cn:'女衬衫', eg:'This blouse is too small.', egzh:'这件衬衫太小了。'}
+ ],
+ 109:[
+  {w:'idea',      ph:'/aɪˈdɪə/',      pos:'n.',   cn:'主意', eg:"That's a good idea.", egzh:'好主意。'},
+  {w:'sugar',     ph:'/ˈʃʊɡə/',       pos:'n.',   cn:'糖', eg:'How much sugar do you want?', egzh:'你要多少糖？'},
+  {w:'teaspoonful', ph:'/ˈtiːspuːnfʊl/', pos:'n.', cn:'一茶匙（的量）', eg:'One teaspoonful, please.', egzh:'请放一茶匙。'},
+  {w:'less',      ph:'/les/',         pos:'adj./adv.', cn:'更少（不可数）', eg:'Less than that, please.', egzh:'比那个再少一点。'},
+  {w:'fewer',     ph:'/ˈfjuːə/',      pos:'adj.', cn:'更少（可数）', eg:'There are fewer people today.', egzh:'今天人少一些。'},
+  {w:'milk',      ph:'/mɪlk/',        pos:'n.',   cn:'牛奶', eg:'Just a little milk.', egzh:'只要一点牛奶。'}
+ ],
+ 111:[
+  {w:'model',     ph:'/ˈmɒdl/',       pos:'n.',   cn:'型号', eg:'This is the most expensive model.', egzh:'这是最贵的型号。'},
+  {w:'price',     ph:'/praɪs/',       pos:'n.',   cn:'价格', eg:'What is the price?', egzh:'价格是多少？'},
+  {w:'afford',    ph:'/əˈfɔːd/',      pos:'v.',   cn:'负担得起', eg:"I can't afford it.", egzh:'我买不起。'},
+  {w:'deposit',   ph:'/dɪˈpɒzɪt/',    pos:'n.',   cn:'定金', eg:'You can pay a deposit.', egzh:'你可以先付定金。'},
+  {w:'instalment', ph:'/ɪnˈstɔːlmənt/', pos:'n.', cn:'分期付款的一期', eg:'Pay the rest in monthly instalments.', egzh:'剩下的按月分期付。'},
+  {w:'pay',       ph:'/peɪ/',         pos:'v.',   cn:'付钱', three:['pay','paid','paid'], eg:'He has paid the deposit.', egzh:'他已经付了定金。'}
+ ],
+ 113:[
+  {w:'change',    ph:'/tʃeɪndʒ/',     pos:'n.',   cn:'零钱', eg:'Have you got any small change?', egzh:'你有零钱吗？'},
+  {w:'note',      ph:'/nəʊt/',        pos:'n.',   cn:'纸币', eg:"I've only got a ten-pound note.", egzh:'我只有一张十镑的纸币。'},
+  {w:'coin',      ph:'/kɔɪn/',        pos:'n.',   cn:'硬币', eg:"I've got some coins.", egzh:'我有一些硬币。'},
+  {w:'conductor', ph:'/kənˈdʌktə/',   pos:'n.',   cn:'（公共汽车）售票员', eg:'The conductor asked for the fare.', egzh:'售票员来收车费。'},
+  {w:'fare',      ph:'/feə/',         pos:'n.',   cn:'车费', eg:'How much is the fare?', egzh:'车费多少？'},
+  {w:'passenger', ph:'/ˈpæsɪndʒə/',   pos:'n.',   cn:'乘客', eg:'None of the passengers had any change.', egzh:'乘客们都没有零钱。'}
+ ],
+ 115:[
+  {w:'knock',     ph:'/nɒk/',         pos:'v.',   cn:'敲', eg:'Someone is knocking at the door.', egzh:'有人在敲门。'},
+  {w:'ring',      ph:'/rɪŋ/',         pos:'v.',   cn:'按铃；响', three:['ring','rang','rung'], eg:'The bell rang.', egzh:'铃响了。'},
+  {w:'everyone',  ph:'/ˈevriwʌn/',    pos:'pron.', cn:'每个人', eg:'Everyone is here.', egzh:'大家都到了。'},
+  {w:'someone',   ph:'/ˈsʌmwʌn/',     pos:'pron.', cn:'某人', eg:'Someone is at the door.', egzh:'门口有人。'},
+  {w:'nobody',    ph:'/ˈnəʊbədi/',    pos:'pron.', cn:'没有人', eg:'Nobody answered.', egzh:'没人回答。'},
+  {w:'nothing',   ph:'/ˈnʌθɪŋ/',      pos:'pron.', cn:'没有什么', eg:'There is nothing in the box.', egzh:'箱子里什么也没有。'}
+ ],
+ 117:[
+  {w:'suddenly',  ph:'/ˈsʌdənli/',    pos:'adv.', cn:'突然', eg:'Suddenly the phone rang.', egzh:'突然电话响了。'},
+  {w:'while',     ph:'/waɪl/',        pos:'conj.', cn:'当…的时候', eg:'She was cooking while he was reading.', egzh:'她做饭的时候他在看书。'},
+  {w:'noise',     ph:'/nɔɪz/',        pos:'n.',   cn:'响声，噪音', eg:'I heard a noise.', egzh:'我听到一个响声。'},
+  {w:'hear',      ph:'/hɪə/',         pos:'v.',   cn:'听见', three:['hear','heard','heard'], eg:'Did you hear that?', egzh:'你听见了吗？'},
+  {w:'drop',      ph:'/drɒp/',        pos:'v.',   cn:'掉落，丢下', three:['drop','dropped','dropped'], eg:'He dropped the cup.', egzh:'他把杯子掉了。'},
+  {w:'quietly',   ph:'/ˈkwaɪətli/',   pos:'adv.', cn:'安静地', eg:'They were talking quietly.', egzh:'他们在小声说话。'}
+ ],
+ 119:[
+  {w:'story',     ph:'/ˈstɔːri/',     pos:'n.',   cn:'故事', eg:'Do you like stories?', egzh:'你喜欢听故事吗？'},
+  {w:'true',      ph:'/truː/',        pos:'adj.', cn:'真实的', eg:'It is a true story.', egzh:'这是个真实的故事。'},
+  {w:'thief',     ph:'/θiːf/',        pos:'n.',   cn:'小偷（复数 thieves）', eg:'Two thieves climbed into the kitchen.', egzh:'两个小偷爬进了厨房。'},
+  {w:'climb',     ph:'/klaɪm/',       pos:'v.',   cn:'爬', eg:'They climbed through the window.', egzh:'他们从窗户爬了进来。'},
+  {w:'torch',     ph:'/tɔːtʃ/',       pos:'n.',   cn:'手电筒', eg:'They turned on a torch.', egzh:'他们打开了手电筒。'},
+  {w:'voice',     ph:'/vɔɪs/',        pos:'n.',   cn:'声音（人声）', eg:'They heard a voice behind them.', egzh:'他们听见身后有个声音。'},
+  {w:'parrot',    ph:'/ˈpærət/',      pos:'n.',   cn:'鹦鹉', eg:'It was only a parrot!', egzh:'原来只是一只鹦鹉！'},
+  {w:'run',       ph:'/rʌn/',         pos:'v.',   cn:'跑', three:['run','ran','run'], eg:'They ran away.', egzh:'他们跑掉了。'}
+ ],
+
 };
 
 /* 本模块必须背熟三态的不规则动词（原书 88 / 90 课那两张表 + 练习里用到的） */
@@ -2579,7 +3515,13 @@ const IRREG_DRILL=[
  ['take','took','taken'],['give','gave','given'],['come','came','come'],['swim','swam','swum'],
  ['sell','sold','sold'],['cost','cost','cost'],['put','put','put'],['cut','cut','cut'],
  ['know','knew','known'],['forget','forgot','forgotten'],
- ['fly','flew','flown'],['catch','caught','caught'],['fall','fell','fallen'],['hurt','hurt','hurt']
+ ['fly','flew','flown'],['catch','caught','caught'],['fall','fell','fallen'],['hurt','hurt','hurt'],
+ ['lend','lent','lent'],['pay','paid','paid'],['ring','rang','rung'],['hear','heard','heard'],
+ ['run','ran','run'],['drink','drank','drunk'],['sit','sat','sat'],['stand','stood','stood'],
+ ['tell','told','told'],['say','said','said'],['think','thought','thought'],['get','got','got'],
+ ['sleep','slept','slept'],['wake','woke','woken'],['drive','drove','driven'],['begin','began','begun'],
+ ['meet','met','met'],['send','sent','sent'],['spend','spent','spent'],['wear','wore','worn'],
+ ['drop','dropped','dropped'],['climb','climbed','climbed']
 ];
 
 const WORD_GOAL=10;            // 每天单词题量
@@ -2674,7 +3616,9 @@ const READ_GOAL=3;                        // 每天跟读几遍算达标
 /* 内置课文：原书课文有版权，不能抄进来，所以这四篇是**照着每个课对的语法点仿写**的，
    长度、词汇量都对齐新概念一册（60–80 词的小对话）。想换成书上原文，页面里可以替换。 */
 const STORY_LESSONS={83:'出门前', 85:'去过巴黎吗', 87:'车修好了吗', 89:'住了多久',
-  91:'邻居要搬走了', 93:'开飞机的邻居', 95:'赶火车', 97:'丢在火车上的箱子', 99:'摔了一跤'};
+  91:'邻居要搬走了', 93:'开飞机的邻居', 95:'赶火车', 97:'丢在火车上的箱子', 99:'摔了一跤',
+  101:'吉米的明信片', 103:'考试怎么样', 105:'满是错误的信', 107:'这件太小了', 109:'来点咖啡',
+  111:'最贵的型号', 113:'没有零钱', 115:'谁在敲门', 117:'汤米的早饭', 119:'一个真实的故事'};
 const BUILTIN_TEXTS={
  83:{title:'出门前', focus:'have done + already / just',
   must:[2,4,5,9],
@@ -2711,7 +3655,48 @@ const BUILTIN_TEXTS={
  89:{title:'住了多久', focus:'How long…? + for / since',
   must:[0,1,6],
   en:"How long have you lived in this house? I have lived here since 1976. Why are you selling it? Because I have retired. May I look at the garden? Yes, of course. I have had this house for twenty years. It cost me two thousand pounds. I believe it is worth every penny.",
-  zh:"你在这栋房子里住了多久了？我从 1976 年就住这儿了。你为什么要卖它？因为我退休了。我可以看看花园吗？当然可以。这房子我有二十年了。当年花了我两千英镑。我相信它值这个价钱。"}
+  zh:"你在这栋房子里住了多久了？我从 1976 年就住这儿了。你为什么要卖它？因为我退休了。我可以看看花园吗？当然可以。这房子我有二十年了。当年花了我两千英镑。我相信它值这个价钱。"},
+ 101:{title:'吉米的明信片', focus:'He says that… 转述别人的话',
+  must:[1,2,5],
+  en:"Here is a card from Jimmy. What does he say? He says that he is having a wonderful holiday. He says that the hotel is very nice. What else does he say? He says that he has spent all his money. He wants us to send him some more. He says that he will come home next week.",
+  zh:"这是吉米寄来的明信片。他说什么？他说他正在度一个很棒的假期。他说旅馆很好。他还说了什么？他说他把钱都花光了。他想让我们再寄点给他。他说他下周回家。"},
+ 103:{title:'考试怎么样', focus:'too / enough',
+  must:[3,5,9],
+  en:"How was the exam, Tom? It was not too bad. But the questions were very difficult. Was there enough time? No, there was not enough time. The exam was too long. I could not answer the last question. I hope I will pass. I am sure you will. You worked hard enough.",
+  zh:"考试怎么样，汤姆？还不算太糟。但是题目很难。时间够吗？不够，时间不够。考试太长了。最后一题我没答出来。我希望我能通过。我肯定你能。你够用功了。"},
+ 105:{title:'满是错误的信', focus:'tell / ask / want sb to do · put it on',
+  must:[2,5,9],
+  en:"Where is Miss Jones? She is in the office. Please ask her to come here. This letter is full of mistakes. I want her to type it again. Tell her to be careful this time. Here is the file. Put the letter in it. And this coat? Put it on. It is cold outside.",
+  zh:"琼斯小姐在哪儿？她在办公室。请叫她过来。这封信全是错。我想让她重打一遍。叫她这次仔细点。文件夹在这儿。把信放进去。这件外套呢？穿上它。外面冷。"},
+ 107:{title:'这件太小了', focus:'比较级 -er / more … than',
+  must:[3,6,7],
+  en:"Can I help you? Yes, I want a blouse, please. This one is too small. Have you got a larger one? Here is a larger one. It is nicer, too. But it is more expensive than that one. The quality is better. Is it much more expensive? Only a little. I will take it.",
+  zh:"需要帮忙吗？是的，我想要一件女衬衫。这件太小了。你有大一点的吗？这件大一些。也更好看。可是它比那件贵。质量更好。贵很多吗？只贵一点。我要了。"},
+ 109:{title:'来点咖啡', focus:'more / less / fewer · a little / a few',
+  must:[3,6,10],
+  en:"Shall I make some coffee? That is a good idea. Do you want any milk? Just a little. How much sugar? Two teaspoonfuls? No, less than that. One is enough for me. Would you like some more coffee? Yes, please, but less milk this time. There are fewer biscuits than yesterday.",
+  zh:"我来煮点咖啡好吗？好主意。要牛奶吗？只要一点。糖要多少？两茶匙？不，比那少点。一匙就够了。再来点咖啡吗？好的，不过这次牛奶少放点。饼干比昨天少了。"},
+ 111:{title:'最贵的型号', focus:'最高级 the most / the -est · as … as',
+  must:[1,3,8],
+  en:"I would like a television set. This is the most expensive model in the shop. It is also the best. Is it as good as that one? It is much better. But it costs five hundred pounds. That is too much for me. Have you got a cheaper one? This is the cheapest model we have. I will pay a deposit and pay the rest in instalments.",
+  zh:"我想要一台电视机。这是店里最贵的型号。也是最好的。它和那台一样好吗？好得多。可是它要五百英镑。对我来说太贵了。你有便宜点的吗？这是我们最便宜的型号。我先付定金，剩下的分期付。"},
+ 113:{title:'没有零钱', focus:'some / any / none · So / Neither',
+  must:[1,2,9],
+  en:"Fares, please. Have you got any small change? I am sorry, I have got none. I have only got a ten-pound note. Has anyone got any change? No, none of us has. Neither have I. So the conductor let them ride free. Everyone was happy. So was the conductor.",
+  zh:"请买票。你有零钱吗？对不起，我一点也没有。我只有一张十镑的纸币。有人有零钱吗？没有，我们都没有。我也没有。于是售票员让他们免费坐了。大家都很高兴。售票员也是。"},
+ 115:{title:'谁在敲门', focus:'someone / anyone / no one · something / nothing',
+  must:[1,3,6],
+  en:"Someone is knocking at the door. Is there anyone at the door? I cannot see anyone. Nobody is there. But I heard something. Look in the garden. There is nothing in the garden. Everything is quiet. Wait, there is someone by the gate. It is only the postman.",
+  zh:"有人在敲门。门口有人吗？我看不见有人。那儿没人。可是我听到了什么。看看花园。花园里什么也没有。一切都很安静。等等，大门边有个人。只是邮递员。"},
+ 117:{title:'汤米的早饭', focus:'过去进行时 was / were doing + when / while',
+  must:[0,3,4],
+  en:"What were you doing at eight o'clock this morning? I was having breakfast. What was Tommy doing? He was eating his eggs when suddenly he dropped his cup. His mother was reading the paper while his father was listening to the radio. When they heard the noise, they ran into the kitchen. Tommy was sitting quietly and smiling.",
+  zh:"今天早上八点你在干什么？我在吃早饭。汤米在干什么？他正在吃鸡蛋，突然把杯子摔了。他妈妈在看报纸，他爸爸在听收音机。他们听到响声就跑进了厨房。汤米安静地坐着，笑眯眯的。"},
+ 119:{title:'一个真实的故事', focus:'过去完成时 had done + after / when',
+  must:[3,6,7],
+  en:"Do you like stories? This is a true story. Last year, while George was reading in bed, two thieves climbed into his kitchen. After they had entered the house, they went into the dining room. It was very dark, so they turned on a torch. Suddenly they heard a voice behind them. After they had heard it, they dropped the torch and ran away. When George came down, the thieves had gone. The voice was his parrot!",
+  zh:"你喜欢听故事吗？这是个真实的故事。去年，乔治在床上看书的时候，两个小偷爬进了他的厨房。他们进了房子之后，走进了餐厅。屋里很黑，他们就打开了手电筒。突然他们听见身后有个声音。听到之后，他们扔下手电筒跑了。乔治下楼时，小偷早就跑了。那个声音是他的鹦鹉！"},
+
 };
 function loadTexts(){
   let mine={};
@@ -2985,12 +3970,33 @@ const MAP_NODES=[
           '有 for 不等于一定用完成时：那段已经结束就用过去时']},
  {uid:'u3', name:'been to / gone to', fml:'been to = 去过（回来了）　｜　gone to = 去了（没回来）　｜　been in = 待了多久', les:'L85 + 课外',
   points:['做题先问：人现在在不在这儿','第一人称基本不说 I have gone to…','been in + for + 时长，介词是 in 不是 to',
-          '原书没教这个对比，知道区别就够']}
+          '原书没教这个对比，知道区别就够']},
+ {uid:'u13', name:'间接引语 says that', fml:'X says that + 原话（I → he/she，my → his/her）', les:'L101–102',
+  points:['主句 says 现在时，从句时态不变','换了主语动词也要换：have → has，feel → feels','物主代词跟着换：my → his / her','问法：What does he say?']},
+ {uid:'u14', name:'too / enough', fml:'too + 形容词　｜　形容词 + enough　｜　enough + 名词', les:'L103–104',
+  points:['too 在形容词前，enough 在形容词后','enough 跟名词时放名词前','too … to do ＝ 太…而不能','too many + 可数 / too much + 不可数']},
+ {uid:'u15', name:'tell sb to do / put it on', fml:'tell / ask / want + 人 + (not) to + 原形　｜　Put it on', les:'L105–106',
+  points:['人用宾格：tell him，不是 tell he','否定 not to do','短语动词的宾语是代词时放中间：Put it on','宾语是名词时前后都行：Put on your coat / Put your coat on']},
+ {uid:'u16', name:'比较级 -er than', fml:'短词 -er + than　｜　长词 more … than', les:'L107–108',
+  points:['big → bigger 双写','heavy → heavier y 变 i','large → larger 只加 r','more 和 -er 不能同时用；much + 比较级']},
+ {uid:'u17', name:'more / less / fewer', fml:'more + 名词　｜　less + 不可数　｜　fewer + 可数', les:'L109–110',
+  points:['a little + 不可数 / a few + 可数','good → better，bad → worse','much / many → more，little → less','"少于那个"：less than that']},
+ {uid:'u18', name:'最高级 / as…as', fml:'the -est / the most　｜　as + 原级 + as', les:'L111–112',
+  points:['最高级前必有 the','三个以上比出"最"，两个比用比较级','as … as 中间是原级','not as … as ＝ 不如']},
+ {uid:'u19', name:'some / any / none · So do I', fml:'some 肯定 / any 疑问否定 / none 单独用　｜　So + 助动词 + 主语', les:'L113–114',
+  points:['none 后面不跟名词','So am I / So do I / So have I 助动词跟前一句走','否定用 Neither','主语放最后：So does Tom']},
+ {uid:'u20', name:'不定代词', fml:'someone / anyone / no one / everyone　·　something / anything / nothing / everything', les:'L115–116',
+  points:['肯定 some-，疑问否定 any-','no- 自带否定，不再加 not','都算单数：Everyone is','请人吃喝用 something']},
+ {uid:'u21', name:'过去进行时', fml:'was / were + doing', les:'L117–118',
+  points:['I / he / she was，you / we / they were','What were you doing at 8?','进行时 + when + 过去时短动作','while 两边都是进行时']},
+ {uid:'u22', name:'过去完成时', fml:'had + 过去分词', les:'L119–120',
+  points:['两件过去的事，先发生的用 had done','所有人称都是 had','After A had done, B did','When B did, A had already done']},
+
 ];
 
 function renderMap(){
   let h='<div class="daytop"><div class="dayhead"><div>'
-   + '<div class="dtitle">语法汇总 · Lesson 83–100</div>'
+   + '<div class="dtitle">语法汇总 · Lesson 83–120</div>'
    + '<div class="dsub">这十八课的语法就这 '+MAP_NODES.length+' 块，按课次从上到下排。'
    + '红色 ★★★ 必掌握（考点 + 课本连着操练），黄色 ★★ 常用，灰色 ★ 仅了解。'
    + '点任意一块进去看公式拆解和练习。</div></div></div></div>';
@@ -3319,11 +4325,11 @@ function todayStripHTML(wordDone, wordTotal, gramDone, gramTotal){
   const sl=storyLessonFor(curLesson());
   const rd=readsToday(sl);
   const item=(name,cur,goal,anchor,unit)=>{
-    const ok=cur>=goal && goal>0;
+    const ok=goal>0 ? cur>=goal : true;      // 今天没有这一项（0/0）也算完成
     return '<button class="tstep'+(ok?' ok':'')+'" data-go="'+anchor+'" type="button">'
       + '<span class="tsdot">'+(ok?'✓':'')+'</span>'
       + '<span class="tsname">'+name+'</span>'
-      + '<span class="tsnum">'+cur+'/'+goal+(unit||'')+'</span></button>';
+      + '<span class="tsnum">'+(goal>0?cur+'/'+goal+(unit||''):'今天没有')+'</span></button>';
   };
   return '<div class="tstrip">'
     + item('读课文', Math.min(rd,READ_GOAL), READ_GOAL, 'stepText', ' 遍')
@@ -3449,15 +4455,17 @@ function renderTodayWrong(){
 function renderDaily(){
   const L=curLesson();
   const todayRec=loadDays()[todayStr()];
-  const list=buildDaily();
-  const wlist=buildDailyWords();
+  const plan=todayPlan();
+  const list=plan.gram;
+  const wlist=plan.words;
   const sl=storyLessonFor(L);
   const txt=loadTexts()[sl]||{};
   const rd=readsToday(sl);
 
   // 今天这三段各自做了多少（已交过的不再算未完成）
-  const wDone=wlist.filter(x=>S[x.rec.key]).length;
-  const gDone=list.filter(x=>S[x.rec.key]&&!(x.why==='错题回炉'||x.why==='薄弱点重练')).length;
+  const wDone=wlist.filter(x=>doneToday(x.rec.key)).length;
+  const gDone=list.filter(x=>doneToday(x.rec.key)).length;
+  const allDone=isDayDone(plan);
 
   let h='';
   h+=todayStripHTML(wDone, wlist.length, gDone, list.length);
@@ -3473,7 +4481,7 @@ function renderDaily(){
    + '</div>';
   if(todayRec){
     h+='<div class="dayflag ok">今天已做 <b>'+todayRec.n+'</b> 题（对 '+todayRec.ok+'）'
-     + ((todayRec.n>=(WORD_GOAL+DAILY_N) || (!list.length && !wlist.length))?' —— 今天的量够了。':' —— 接着做完剩下的。')+'</div>';
+     + (allDone?' —— 今天的量够了。':' —— 接着做完剩下的。')+'</div>';
   }
   const twN=todayWrongList().length;
   if(twN){
@@ -3482,6 +4490,41 @@ function renderDaily(){
      + '<button class="btn twbtn" data-tw="redo" type="button">只重写错题</button></span></div>';
   }
   h+='</div>';
+
+  // ── 完成态：今天清单全部答完 → 整页显示完成，不再抽新题；想多做去「加练」
+  if(allDone){
+    const n=list.length+wlist.length;
+    h+='<div class="dayresult donecard"><div class="drtop">✓ 今天的作业做完了</div>'
+     + '<div class="drmsg">课文 '+Math.min(rd,READ_GOAL)+'/'+READ_GOAL+' 遍　·　'
+     + (plan.legacy && todayRec ? '今天已交 '+todayRec.n+' 题（对 '+todayRec.ok+'）。' : '单词 '+wDone+'/'+wlist.length+' 题　·　语法 '+gDone+'/'+list.length+' 题。')
+     + (rd<READ_GOAL?'课文还没读够 '+READ_GOAL+' 遍，顺手补上。':'')
+     + '写错的题会按 1／3／7／21／60 天自动回到作业里，明天再来。学了新课就把上面的课次 +1。</div>'
+     + '<div class="acts"><button class="btn" id="goExtra" type="button">加练一组 →</button>'
+     + (rd<READ_GOAL?'<button class="btn ghost" id="goStory2" type="button">去读课文</button>':'')
+     + (n?'<button class="btn ghost" id="reviewToday" type="button">回看今天的题</button>':'')
+     + '</div></div>'
+     + '<div id="reviewSlot" style="display:none;margin-top:14px"></div>';
+    main.innerHTML=h; bindLessonPick(); bindTodayStrip(); bindTwBtns(main);
+    document.getElementById('goExtra').onclick=()=>{ view='EXTRA'; EXTRA_SET=null; render(); scrollTo(0,0); };
+    const gs2=document.getElementById('goStory2');
+    if(gs2) gs2.onclick=()=>{ STORY_VIEW=null; view='TEXT'; render(); scrollTo(0,0); };
+    const rv=document.getElementById('reviewToday');
+    if(rv) rv.onclick=()=>{
+      const slot=document.getElementById('reviewSlot');
+      if(slot.dataset.built){ slot.style.display=slot.style.display==='none'?'':'none'; return; }
+      slot.dataset.built='1';
+      let k=0;
+      wlist.concat(list).forEach(x=>{
+        const c=itemCard({...x.rec, no:++k}, 700+k);
+        const tag=document.createElement('div'); tag.className='whytag m3';
+        tag.textContent=x.why+(x.rec.kind==='word'?' · L'+x.rec.les:' · '+lessonLabel(lessonOf(x.rec))+' · '+x.rec.unit.tab);
+        const body=c.el.querySelector('.qbody'); body.insertBefore(tag, body.firstChild);
+        slot.appendChild(c.el);
+      });
+      slot.style.display='';
+    };
+    return;
+  }
 
   if(!list.length && !wlist.length){
     h+='<div class="dayflag">已学范围内的题都做完、错题也没到复习期。'
@@ -3569,7 +4612,8 @@ function renderDaily(){
   // ── 语法题 + 它自己的提交栏
   const gramSlot=document.getElementById('gramSlot');
   const cards=list.map((x,i)=>{
-    const redo=(x.why==='错题回炉'||x.why==='薄弱点重练');
+    // 回炉题渲染成空白让人重做；但今天已经答过（半路刷新）就按已答显示，不然计数说 16/16 卡片却是空的
+    const redo=(x.why==='错题回炉'||x.why==='薄弱点重练') && !doneToday(x.rec.key);
     const card=itemCard({...x.rec, no:i+1}, i, {fresh:redo, keepRight:redo});
     const why=document.createElement('div');
     why.className='whytag '+(x.why==='错题回炉'?'m1':(x.why==='本课重点'?'m2':'m3'));
@@ -3586,12 +4630,62 @@ function renderDaily(){
       + '<div class="drmsg">'+(pct>=90?'这个正确率可以往下学新课了 —— 把上面的课次 +1。'
           :pct>=70?'错的往上翻，看「哪里错了」那行；明天它们会自动回到作业里。'
                   :'错得有点多，点开上面「今天要用到的语法点」把公式和例句拆解再过一遍，明天这些题会回炉。')+'</div>'
-      + '<div class="acts">'+twBtnHTML('')+'<button class="btn ghost" id="againBtn" type="button">再来一组</button>'
+      + '<div class="acts">'+twBtnHTML('')+'<button class="btn ghost" id="againBtn" type="button">加练一组</button>'
       + '<button class="btn ghost" id="toStats" type="button">看数据统计</button></div>';
     container.appendChild(box); bindTwBtns(box);
-    document.getElementById('againBtn').onclick=()=>{ render(); scrollTo(0,0); };
+    document.getElementById('againBtn').onclick=()=>{ view='EXTRA'; EXTRA_SET=null; render(); scrollTo(0,0); };
     document.getElementById('toStats').onclick=()=>{ view='STATS'; render(); scrollTo(0,0); };
     refreshStrip();
+  });
+}
+
+/* ==========================================================================
+ *      加练：今日作业之外另抽一组，不计入当天进度（错了照样进回炉曲线）
+ * ========================================================================== */
+function renderExtra(){
+  const done=isDayDone();
+  if(!EXTRA_SET) EXTRA_SET=buildExtra();
+  const list=EXTRA_SET;
+  const dEx=loadDays()[todayStr()];
+  let h='<div class="exhead"><b>加练 · 额外一组</b><span>'+list.length+' 题 · 不算进今日作业的进度；写错的题一样进回炉曲线'
+    + ((dEx&&dEx.extra)?' · 今天已加练 '+dEx.extra+' 题':'')+'</span></div>';
+  if(!done){
+    h+='<div class="dayflag bad"><span>今日作业还没做完 —— 先把作业交了再加练，进度才不乱。</span>'
+     + '<span class="acts"><button class="btn" id="backToday" type="button">回今日作业</button></span></div>';
+  }
+  if(!list.length){
+    h+='<div class="dayflag">已学范围内的题今天都做过了，没有可加练的。把课次 +1 学新课，或者去「阶段测评」。</div>';
+    main.innerHTML=h;
+    const bt=document.getElementById('backToday'); if(bt) bt.onclick=()=>{ view='TODAY'; render(); scrollTo(0,0); };
+    return;
+  }
+  h+='<div id="extraSlot"></div>';
+  main.innerHTML=h;
+  const bt=document.getElementById('backToday'); if(bt) bt.onclick=()=>{ view='TODAY'; render(); scrollTo(0,0); };
+  const slot=document.getElementById('extraSlot');
+  const cards=list.map((x,i)=>{
+    const redo=(x.why==='错题回炉'||x.why==='薄弱点重练');
+    const card=itemCard({...x.rec, no:i+1}, 500+i, {fresh:true, keepRight:redo});
+    const why=document.createElement('div');
+    why.className='whytag '+(x.why==='错题回炉'?'m1':(x.why==='本课重点'?'m2':'m3'));
+    why.textContent=x.why+' · '+lessonLabel(lessonOf(x.rec))+' · '+x.rec.unit.tab;
+    card.el.querySelector('.qbody').insertBefore(why, card.el.querySelector('.qbody').firstChild);
+    slot.appendChild(card.el);
+    return card;
+  });
+  attachSubmitBar(slot, cards, '交卷 · 批改', function(ok,total,container){
+    const d=loadDays(), t=todayStr();
+    d[t]=d[t]||{n:0,ok:0}; d[t].extra=(d[t].extra||0)+total; d[t].extraOk=(d[t].extraOk||0)+ok;
+    try{localStorage.setItem(DONE_KEY,JSON.stringify(d))}catch(e){}
+    const box=document.createElement('div'); box.className='dayresult';
+    box.innerHTML='<div class="drtop">加练：<b>'+ok+' / '+total+'</b></div>'
+      + '<div class="drmsg">'+(ok===total?'全对。':'错的往上翻看「哪里错了」；这些题会按回炉曲线再回来。')+'</div>'
+      + '<div class="acts">'+twBtnHTML('')+'<button class="btn" id="extraAgain" type="button">再来一组</button>'
+      + '<button class="btn ghost" id="extraBack" type="button">回今日作业</button></div>';
+    container.appendChild(box); bindTwBtns(box);
+    document.getElementById('extraAgain').onclick=()=>{ EXTRA_SET=null; render(); scrollTo(0,0); };
+    document.getElementById('extraBack').onclick=()=>{ view='TODAY'; render(); scrollTo(0,0); };
+    renderTabs();
   });
 }
 
@@ -4178,11 +5272,12 @@ function render(){
   DEMO_SEEN.clear();
   if(view==='TODAY'){ setCrumb('今日作业','第 '+curLesson()+' 课 · 一天 '+DAILY_N+' 题'); renderDaily(); updateBars(); return; }
   if(view==='TWRONG'){ setCrumb('今日错题', TW_MODE==='redo'?'只重写今天写错的':'今天写错的题 · 看错在哪'); renderTodayWrong(); updateBars(); return; }
+  if(view==='EXTRA'){ setCrumb('加练','今日作业之外另抽一组 · 不计入当天进度'); renderExtra(); updateBars(); return; }
   if(view==='WORDS'){ const wl=WORD_VIEW||storyLessonFor(curLesson());
     setCrumb('单词','Lesson '+wl+' · '+(WORDS[wl]||[]).length+' 词'); renderWords(); updateBars(); return; }
   if(view==='WQUIZ' && WQUIZ){ setCrumb('单词自测', WQUIZ.les==='irreg'?'不规则动词三态':('Lesson '+WQUIZ.les));
     renderWordQuiz(); updateBars(); return; }
-  if(view==='MAP'){ setCrumb('语法汇总','L83–100 · 标了哪些必掌握'); renderMap(); updateBars(); return; }
+  if(view==='MAP'){ setCrumb('语法汇总','L83–120 · 标了哪些必掌握'); renderMap(); updateBars(); return; }
   if(view==='EXAM'){ setCrumb('阶段测评','覆盖到第 '+curLesson()+' 课的全部知识点'); renderExam(); updateBars(); return; }
   if(view==='TEXT'){ const sl=STORY_VIEW||storyLessonFor(curLesson());
     setCrumb('课文熟读','Lesson '+sl+'–'+(sl+1)); renderText(); updateBars(); return; }
